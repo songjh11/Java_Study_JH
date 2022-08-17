@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java,windows,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java,windows,maven
 
+### my ###
+database.properties
+
 ### Eclipse ###
 .metadata
 bin/
