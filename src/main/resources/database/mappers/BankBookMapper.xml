@@ -4,27 +4,27 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.iu.spring.bankbook.BankBookDAO">
-	<insert id="setBook" parameterType="com.iu.spring.bankbook.BankBookDTO">
+	<insert id="setBook" parameterType="BankBookDTO">
 		INSERT INTO BANKBOOK VALUES (#{bookNum}, #{bookName}, #{bookRate}, 1)
 	</insert>
 	
-	<update id="setUpdate" parameterType="com.iu.spring.bankbook.BankBookDTO">
+	<update id="setUpdate" parameterType="BankBookDTO">
 		UPDATE BANKBOOK SET BOOKNAME= #{bookName}, BOOKRATE=#{bookRate} WHERE BOOKNUM = #{bookNum}
 	</update>
 	
-	<update id="setChangeSale" parameterType="com.iu.spring.bankbook.BankBookDTO">
+	<update id="setChangeSale" parameterType="BankBookDTO">
 		UPDATE BANKBOOK SET BOOKSALE = #{bookSale} WHERE BOOKNUM = #{bookNum}
 	</update>
 
-	<select id="getList" resultType="com.iu.spring.bankbook.BankBookDTO">
+	<select id="getList" resultType="BankBookDTO">
 		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
 	</select>
 	
-	<select id="getDetail" parameterType="com.iu.spring.bankbook.BankBookDTO" resultType="com.iu.spring.bankbook.BankBookDTO">
+	<select id="getDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
 		SELECT * FROM BANKBOOK WHERE BOOKNUM = #{bookNum}
 	</select>
 	
-	<delete id="deleteBook" parameterType="com.iu.spring.bankbook.BankBookDTO">
+	<delete id="deleteBook" parameterType="BankBookDTO">
 		DELETE BANKBOOK WHERE BOOKNUM = #{bookNum}
 	</delete>
 
