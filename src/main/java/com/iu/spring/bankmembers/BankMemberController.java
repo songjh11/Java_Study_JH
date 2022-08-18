@@ -1,8 +1,77 @@
 package com.iu.spring.bankmembers;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.iu.spring.bankmembers.BankMembersDTO;
 
 @Controller
+@RequestMapping (value="/members/*")
 public class BankMemberController {
+	
+	@Autowired
+	private BankMemberService bankMemberService;
+
+	@RequestMapping(value="login.do", method=RequestMethod.GET)
+	public void login() {
+		System.out.println("로그인 실행");
+	}
+	
+	@RequestMapping(value="login.do", method=RequestMethod.POST)
+	public String login(HttpSession session, BankMembersDTO bankMembersDTO, Model model) throws Exception {
+		bankMembersDTO = bankMemberService.getLogin(bankMembersDTO);
+		session.setAttribute("member", bankMembersDTO);
+		if(bankMembersDTO!=null) {
+			System.out.println("로그인 성공");
+		} else {
+			System.out.println("로그인 실패");
+			return "redirect:./login.do";
+		}
+		return "redirect:../";
+	}
+	
+	@RequestMapping(value = "join.do", method = RequestMethod.GET)
+	public void join() {
+		System.out.println("회원가입 실행");
+		System.out.println("GET");
+//		return "redirect:./join.do";
+	}
+
+	@RequestMapping(value="join.do", method = RequestMethod.POST)
+	public String join(BankMembersDTO bankMembersDTO) throws Exception {
+		System.out.println("회원가입 실행");
+		System.out.println("POST");
+		int result = bankMemberService.setJoin(bankMembersDTO);
+			if(result==1) {
+				System.out.println("성공");
+				} else {
+				System.out.println("실패");
+					}
+				return "redirect:./login.do";
+	}
+	
+	
+	@RequestMapping(value="search.do", method= RequestMethod.GET)
+	public void getSearchById() {
+		System.out.println("Search");
+		}
+	
+	@RequestMapping(value="search.do", method= RequestMethod.POST)
+	public ModelAndView getSearchById(String search, Model model) throws Exception {
+		System.out.println("post");
+		List<BankMembersDTO> ar = bankMemberService.getSearchById(search);
+		model.addAttribute("list", ar);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/list");
+		return mv;
+	}
 
 }

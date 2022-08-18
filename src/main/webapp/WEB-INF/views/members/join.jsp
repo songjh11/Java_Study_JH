@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>member page</title>
+<title>Join</title>
 </head>
 <body>
-<h1>member page</h1>
-
+<h1>Join Page</h1>
 </body>
 </html>
