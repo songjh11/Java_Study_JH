@@ -21,7 +21,7 @@ public class BankMembersDAOTest extends MyAbstractTest {
 	public void getLoginTest() throws Exception {
 		bankMembersDTO = new BankMembersDTO();
 		bankMembersDTO.setUserName("1234");
-		bankMembersDTO.setPassword("1234");
+		bankMembersDTO.setPassword("1");
 		bankMembersDTO = bankMemberService.getLogin(bankMembersDTO);
 		assertNull(bankMembersDTO);
 	}

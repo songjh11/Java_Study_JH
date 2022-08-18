@@ -8,8 +8,6 @@ public class BankMembersDTO {
 		private String email;
 		private String phone;
 
-		
-
 		public String getUserName() {
 			return userName;
 		}

@@ -70,7 +70,7 @@ public class BankMemberController {
 		List<BankMembersDTO> ar = bankMemberService.getSearchById(search);
 		model.addAttribute("list", ar);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/member/list");
+		mv.setViewName("/members/list");
 		return mv;
 	}
 
