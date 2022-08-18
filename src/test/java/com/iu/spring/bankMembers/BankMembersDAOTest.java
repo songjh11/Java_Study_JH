@@ -2,6 +2,8 @@ package com.iu.spring.bankMembers;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,6 +27,24 @@ public class BankMembersDAOTest extends MyAbstractTest {
 		bankMembersDTO = bankMemberService.getLogin(bankMembersDTO);
 		assertNull(bankMembersDTO);
 	}
+	
+	@Test
+	public void setJoinTest() throws Exception {
+		bankMembersDTO = new BankMembersDTO();
+		bankMembersDTO.setUserName("56");
+		bankMembersDTO.setPassword("s");
+		bankMembersDTO.setName("s");
+		bankMembersDTO.setEmail("s");
+		bankMembersDTO.setPhone("s");
+		int result =bankMemberService.setJoin(bankMembersDTO);
+		assertEquals(1, result);
+	}
+		
+		@Test
+		public void getSearchById() throws Exception {
+			List<BankMembersDTO> ar = bankMemberService.getSearchById("a");
+			assertEquals(0, ar.size());
+		}
 
 	
 

@@ -11,9 +11,14 @@
 	Hello world!  
 </h1>
 
-<a href="./members/login.do">로그인</a>
-<a href="./members/join.do">회원가입</a>
-<a href="./members/search.do">회원 검색</a>
+<a href="./members/login.do">로그인</a><br>
+<a href="./members/join.do">회원가입</a><br>
+<a href="./members/search.do">회원 검색</a><br>
+
+<hr>
+
+<a href="./bankbook/list.do">List</a><br>
+<a href="./bankbook/add.do">Add</a><br>
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
