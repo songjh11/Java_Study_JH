@@ -20,6 +20,13 @@ public class BankMemberController {
 	@Autowired
 	private BankMemberService bankMemberService;
 
+	@RequestMapping (value="logout.do", method=RequestMethod.GET)
+	public String logout(HttpSession session) throws Exception {
+		System.out.println("logout");
+		session.invalidate();
+		return "redirect:../";
+	}
+	
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public void login() {
 		System.out.println("로그인 실행");
