@@ -4,13 +4,13 @@
 	 <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img alt="고심이" src="/resources/images/gosim.png"></a>
+                <a class="navbar-brand" href="#"><img width=50 heigh=50 alt="뉴진스 토끼" src="/resources/images/tjq6bQ3X_400x400.jpg"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="../">Home</a>
                         <a class="nav-link" href="/board/list.do">공지사항</a>
                         <a class="nav-link" href="/bankbook/list.do">상품리스트</a>
                         

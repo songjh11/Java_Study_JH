@@ -19,6 +19,8 @@
  <c:import url="./template/header.jsp"></c:import>
  
 <br><br>
+<div class="card">
+  <div class="card-body">
  <c:if test="${sessionScope.member eq null}">
  <h3 class="align-center">로그인해주세요</h3>
  </c:if>
@@ -26,6 +28,7 @@
  <c:if test="${not empty sessionScope.member}">
  <h3 class="align-center">${sessionScope.member.userName}님 환영합니다</h3>
  </c:if>
+ </div>
  </div>
  
  <br> <br>
@@ -38,24 +41,24 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="2000">
-            <img src="./resources/images/wallpaper_1.jpg" class="d-block w-100" alt="...">
+            <img src="./resources/images/KakaoTalk_20220820_224225634_01.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <h5></h5>
+              <p></p>
             </div>
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img src="./resources/images/wallpaper_2.jpg" class="d-block w-100" alt="...">
+            <img src="./resources/images/KakaoTalk_20220820_224225634_02.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
+              <h5></h5>
+              <p></p>
             </div>
           </div>
           <div class="carousel-item" data-bs-interval="2000">
-            <img src="./resources/images/wallpaper_5.jpg" class="d-block w-100" alt="...">
+            <img src="./resources/images/KakaoTalk_20220820_224225634.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h5></h5>
+              <p></p>
             </div>
           </div>
         </div>

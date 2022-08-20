@@ -13,17 +13,12 @@
 </style>
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
+<br><br>
 <h1 class="align-center">Detail Page</h1>
 <br>
-<a href = "./list.do">리스트 보기</a>
-<br><br>
-<a href= "./update.do?bookNum=${one.bookNum}">수정하기</a>
-<a href="./delete.do?bookNum=${one.bookNum}">삭제하기</a>
-<c:if test="${not empty sessionScope.member}">
-<a href="../bankAccount/add.do?bookNum=${one.bookNum}">가입하기</a>
-</c:if>
 
-<section class="container-fluid col-lg-8">
+<section class="container-fluid col-lg-5">
 	<div class="row">
 	<table class="table table-bordered border-primary">
 	  <thead>
@@ -43,8 +38,9 @@
 			</tr>
 	   </tbody>
 </table>
-<br>
+<br><br>
 <div class="align-center">
+<a href = "./list.do"><button class="btn btn-primary">상품 목록 보기</button></a>
 <a href= "./update.do?bookNum=${one.bookNum}"><button class="btn btn-primary">상품 수정</button></a>
 <a href="./delete.do?bookNum=${one.bookNum}"><button class="btn btn-primary">상품 삭제</button></a>
 <c:if test="${not empty sessionScope.member}">

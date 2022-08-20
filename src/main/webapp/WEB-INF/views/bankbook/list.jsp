@@ -35,11 +35,9 @@
 				<td>${dto.bookRate}</td>	
 			</tr>
 		</c:forEach>
-		<tr>
-			<td colspan="3"><a href="./add.do">상품 가입</a></td>
-		</tr>
-	   </tbody>
+	  </tbody>
 </table>
+<a href = "./add.do" class="align-center"><button class="btn btn-primary">상품 추가</button></a>
 </div>
 </section>
 <c:import url="../template/footer.jsp"></c:import>
