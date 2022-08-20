@@ -15,6 +15,36 @@
 <c:import url="../template/header.jsp"></c:import>
 <br><br>
 <h1 class="align-center">Add Page</h1>
+<br><br>
+<form action="add.do" method = "POST">
+<section class="container-fluid col-lg-4">
+	<div class="row">
+	<table class="table table-bordered border-primary">
+	  <thead>
+	    <tr>
+	      <th scope="col">ID</th>
+	      <th scope="col">상품 번호</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+			<tr>
+				<td><input type=text name="userName" readonly value="${account.userName}"></td>
+				<td><input type=text name="bookNum" readonly value=${account.bookNum}></td>	
+			</tr>
+	   </tbody>
+</table>
+<br>
+<br>
+<div class="align-center">
+<button type="submit" class="btn btn-primary">상품 추가</button>
+</div>
+</div>
+</section>
+<br>
+</form> 
+<c:import url="../template/footer.jsp"></c:import>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
 
 </body>
 </html>

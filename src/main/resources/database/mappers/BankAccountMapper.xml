@@ -5,7 +5,7 @@
 
 <mapper namespace="com.iu.spring.bankaccount.BankAccountDAO">
 	<insert id="setAccount" parameterType="com.iu.spring.bankaccount.BankAccountDTO">
-		INSERT INTO BANKACCOUNT VALUES (ACCOUNT_seq.NEXTVAL, ?, ?, SYSDATE)
+		INSERT INTO BANKACCOUNT VALUES (ACCOUNT_seq.NEXTVAL, #{userName}, #{bookNum}, SYSDATE)
 	</insert>
 
 </mapper>

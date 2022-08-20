@@ -6,7 +6,7 @@ public class BankAccountDTO {
 
 	private int accountNum;
     private String userName;
-    private int bookNum;
+    private Long bookNum;
     private Date accountDate;
 	public int getAccountNum() {
 		return accountNum;
@@ -20,10 +20,10 @@ public class BankAccountDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public int getBookNum() {
+	public Long getBookNum() {
 		return bookNum;
 	}
-	public void setBookNum(int bookNum) {
+	public void setBookNum(Long bookNum) {
 		this.bookNum = bookNum;
 	}
 	public Date getAccountDate() {
