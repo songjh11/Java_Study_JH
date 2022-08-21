@@ -11,7 +11,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="../">Home</a>
-                        <a class="nav-link" href="/board/list.do">공지사항</a>
+                        <a class="nav-link" href="/notice/list.do">공지사항</a>
                         <a class="nav-link" href="/bankbook/list.do">상품리스트</a>
                         
                         <c:choose>
