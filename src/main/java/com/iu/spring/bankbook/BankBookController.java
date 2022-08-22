@@ -40,15 +40,18 @@ public class BankBookController {
 	}
 	
 	@RequestMapping (value = "add.do", method= RequestMethod.GET)
-	public void addBook() {
+	public void addBook(Model model) {
 		System.out.println("add GET");
+		BankBookDTO bankBookDTO = new BankBookDTO();
+		Calendar cal = Calendar.getInstance();
+		bankBookDTO.setBookNum((Long)cal.getTimeInMillis());
+		System.out.println(bankBookDTO.getBookNum());
+		model.addAttribute("add", bankBookDTO);
 	}
 	
 	@RequestMapping (value = "add.do", method = RequestMethod.POST)
 	public ModelAndView addBook(BankBookDTO bankBookDTO) throws Exception {
 		System.out.println("add POST");
-		Calendar cal = Calendar.getInstance();
-		bankBookDTO.setBookNum((Long)cal.getTimeInMillis());
 		int result = bankBookService.setBook(bankBookDTO);
 		if(result==1) {
 			System.out.println("계좌 추가 성공");

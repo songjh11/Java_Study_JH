@@ -24,12 +24,14 @@
 	<table class="table table-bordered border-primary">
 	  <thead>
 	    <tr>
+	      <th scope="col">상품 번호</th>
 	      <th scope="col">상품 이름</th>
 	      <th scope="col">이자율</th>
 	    </tr>
 	  </thead>
 	  <tbody>
 			<tr>
+				<td><input type="text" name= "bookNum" readonly value="${add.bookNum}"></td>
 				<td><input type="text" name= "bookName"></td>
 				<td><input type= "text" name = "bookRate"></td>	
 			</tr>

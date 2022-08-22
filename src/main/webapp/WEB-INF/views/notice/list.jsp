@@ -29,11 +29,10 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <c:forEach items="${list}" var="dto" varStatus="dtoNum">
+	    <c:forEach items="${noticeList}" var="dto">
 			<tr>
 				<td>${dto.num}</td>
-				<td>${dto.title}</td>
-				<td>${dto.contents}</td>	
+				<td><a href="./detail.do?num=${dto.num}">${dto.title}</a></td>
 				<td>${dto.writer}</td>	
 				<td>${dto.regDate}</td>	
 				<td>${dto.hit}</td>		
@@ -41,6 +40,10 @@
 			</c:forEach>
 	   </tbody>
 </table>
+
+<br><br>
+<a href="./add.do"><button class="btn btn-primary">공지 작성</button></a>
+<br><br>
 </div>
 </section>
 <c:import url="../template/footer.jsp"></c:import>

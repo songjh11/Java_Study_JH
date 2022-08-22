@@ -8,5 +8,18 @@
 		 	<select id="getList" resultType="NoticeDTO">
 		 		SELECT * FROM NOTICE ORDER BY NUM DESC
 		 	</select>
+		 	
+		 	<select id="getDetail" parameterType="NoticeDTO" resultType="NoticeDTO">
+		 		SELECT * FROM NOTICE WHERE NUM = #{num}
+		 	</select>
+		 	
+		 	<insert id="addNotice" parameterType="NoticeDTO">
+		 		INSERT INTO VALUES (NOTICE_SEQ.NEXTVAL, #{title},#{contents},#{writer},SYSDATE,0)
+		 	</insert>
+		 	
+		 	
+		 	<update id="updateHit">
+		 		UPDATE NOTICE SET HIT=HIT+1 WHERE NUM = #{num}
+		 	</update>
 		 
 		 </mapper>

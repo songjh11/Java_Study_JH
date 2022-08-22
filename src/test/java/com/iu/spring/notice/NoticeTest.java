@@ -25,6 +25,19 @@ public class NoticeTest extends MyAbstractTest {
 		
 	}
 	
+	public void test2() {
+		
+		NoticeDTO dto = new NoticeDTO();
+//		dto.setNum()
+//		dto.setTitle()
+//		dto.setWriter()
+//		dto.setContents()
+//		dto.setHit(null);
+//		dto.set
+			
+		
+	}
+	
 	
 
 }

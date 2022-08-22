@@ -32,8 +32,8 @@ public class BankMembersDAO implements MembersDAO{
 	}
 
 	@Override
-	public List<BankMembersDTO> getMyPage(BankMembersDTO bankMembersDTO) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getMyPage", bankMembersDTO);
+	public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getMyPage", bankMembersDTO);
 	}
 }
 	

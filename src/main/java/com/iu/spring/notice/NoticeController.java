@@ -23,5 +23,21 @@ public class NoticeController {
 		session.setAttribute("noticeList", ar);
 		
 	}
-
+	
+	@RequestMapping (value="detail.do", method=RequestMethod.GET)
+	public void getText(NoticeDTO noticeDTO, HttpSession session) throws Exception {
+		System.out.println("NoticeText");
+		noticeDTO = noticeService.getDetail(noticeDTO);
+		session.setAttribute("text", noticeDTO);
+	}
+		
+		@RequestMapping (value="add.do", method=RequestMethod.GET)
+		public void addText() throws Exception {
+			NoticeDTO noticeDTO = new NoticeDTO();
+			int result = noticeService.addNotice();
+		}
+//		int result = noticeService.addNotice(noticeDTO); 
+//		if(result>0) {
+//			String url = "redirect:./list.do";
+//		}
 }

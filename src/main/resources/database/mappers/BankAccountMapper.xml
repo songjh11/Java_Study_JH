@@ -7,6 +7,7 @@
 	<insert id="setAccount" parameterType="BankAccountDTO">
 		INSERT INTO BANKACCOUNT VALUES (ACCOUNT_seq.NEXTVAL, #{userName}, #{bookNum}, SYSDATE)
 	</insert>
+	
 	<select id="getListByUserName" parameterType="BankMembersDTO" resultMap="getListByUserNameResult">
 			SELECT A.ACCOUNTNUM, B.BOOKNAME, A.ACCOUNTDATE
 			FROM BANKACCOUNT A
@@ -14,6 +15,7 @@
 					BANKBOOK B
 					ON (A.BOOKNUM=B.BOOKNUM)
 					WHERE A.USERNAME = #{userName}
+					ORDER BY ACCOUNTNUM DESC
 	</select>
 	
 	<resultMap type="BankAccountDTO" id="getListByUserNameResult">

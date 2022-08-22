@@ -17,31 +17,34 @@
 				INSERT INTO BANKMEMBERS VALUES (#{userName}, #{password}, #{name}, #{email}, #{phone})
 			</insert>
 			
-			<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getListByUserNameResult">
-				SELECT M.USERNAME, M.NAME, M.EMAIL, M.PHONE, A.ACCOUNTNUM, A.ACCOUNTDATE, B.BOOKNAME
-					FROM BANKMEMBERS M
-						 INNER JOIN
-						 BANKACCOUNT A
-						 ON (M.USERNAME = A.USERNAME)
-							 INNER JOIN  
-							 BANKBOOK B
-							 ON (A.BOOKNUM = B.BOOKNUM)
-					WHERE M.USERNAME=#{userName}
+			<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult">
+				  SELECT M.USERNAME, M.NAME, M.EMAIL, M.PHONE, A.ACCOUNTNUM, B.BOOKNAME, A.ACCOUNTDATE
+				    FROM BANKMEMBERS M
+				    INNER JOIN
+				    BANKACCOUNT A
+				    ON (M.USERNAME=A.USERNAME)
+				    INNER JOIN
+				    BANKBOOK B
+				    ON (A.BOOKNUM = B.BOOKNUM)
+				    WHERE M.USERNAME =#{userName}
+				    ORDER BY A.ACCOUNTNUM DESC
 			</select>
 			
-		<resultMap type="BankMembersDTO" id="getListByUserNameResult">
-		<id column="USERNAME" property="userName"/>
-		<result column="NAME" property="name"/>
-		<result column="EMAIL" property="email"/>
-		<result column="PHONE" property="phone"/>
+		<resultMap type="BankMembersDTO" id="getMyPageResult">
+				<id column="USERNAME" property="userName"/>
+				<result column="NAME" property="name"/>
+				<result column="EMAIL" property="email"/>
+				<result column="PHONE" property="phone"/>
 					
-			<collection property="bankAccountDTO" ofType="BankAccountDTO">
+			<collection property="bankAccountDTO" javaType="List" ofType="bankAccountDTO">
 				<id column="ACCOUNTNUM" property="accountNum"/>
 				<result column="ACCOUNTDATE" property="accountDate"/>
+				<association property="bankBookDTO" javaType="BankBookDTO">
+					<result column="BOOKNAME" property="bookName"/>
+				</association>
 			</collection>
 			
-			<collection property="bankBookDTO" ofType="BankBookDTO">
-				<result column="BOOKNAME" property="bookName"/>
-			</collection>
 		</resultMap>
+
 	 </mapper>
+	 

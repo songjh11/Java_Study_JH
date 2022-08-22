@@ -19,12 +19,12 @@
 
 <section class="container-fluid col-lg-4">
 	<div class="row">
-		<h1>${map}</h1>
-		<p>ID: ${map.dtp.userName}</p>
-		<p></p>
-		<p></p>
-		<p></p>
-	-	
+		<%-- <h1>${map}</h1>
+		<p>ID: ${map.dto.userName}</p>
+		<p>${map.dto.name}</p>
+		<p>${map.dto.email}</p>
+		<p>${map.dto.phone}</p>
+	
 	<table class="table table-bordered border-primary">
 	  <thead>
 	    <tr>	
@@ -39,18 +39,57 @@
 	  <tbody>
 	  <c:forEach items="${map.list}" var="memberDTO">
 	    	<tr>
-				<td>${memberDTO.userName}</td>
-				<td>${memberDTO.name}</td>	
-				<td>${memberDTO.email}</td>	
-				<td>${memberDTO.phone}</td>	
-				<td>${memberDTO.accountNum}</td>	
-				<td>${memberDTO.bookName}</td>			
+				<td>${memberDTO.accountNum}</td>
+				<td>${memberDTO.bankBookDTO.bookName}</td>	
+				<td>${memberDTO.accountDate}</td>			
+			</tr>
+	  </c:forEach>
+	   </tbody>
+</table> --%>
+
+<div>
+<table class="table table-bordered border-primary">
+	<thead>
+	    <tr>	
+	      <th scope="col">ID</th>
+	      <th scope="col">이름</th>
+	      <th scope="col">이메일</th>
+	      <th scope="col">전화번호</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    	<tr>
+				<td>${dto.userName}</td>
+				<td>${dto.name}</td>	
+				<td>${dto.email}</td>
+				<td>${dto.phone}</td>					
+			</tr>
+	   </tbody>
+</table> 	
+</div><br><br>
+<div>
+	<table class="table table-bordered border-primary">
+	  <thead>
+	    <tr>	
+          <th scope="col">계좌 번호</th>
+	      <th scope="col">상품명</th>
+	      <th scope="col">개설 일자</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  <c:forEach items="${dto.bankAccountDTO}" var="memberDTO">
+	    	<tr>
+				<td>${memberDTO.accountNum}</td>
+				<td>${memberDTO.bankBookDTO.bookName}</td>	
+				<td>${memberDTO.accountDate}</td>			
 			</tr>
 	  </c:forEach>
 	   </tbody>
 </table>
 </div>
+</div>
 </section>
+<br><br>
 <c:import url="../template/footer.jsp"></c:import>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.spring.bankaccount.BankAccountDTO;
+import com.iu.spring.bankaccount.BankAccountService;
 import com.iu.spring.bankmembers.BankMembersDTO;
 
 @Controller
@@ -21,14 +23,25 @@ public class BankMemberController {
 	
 	@Autowired
 	private BankMemberService bankMemberService;
+//	@Autowired
+//	private BankAccountService bankAccountService;
 	
 	@RequestMapping (value="myPage.do", method=RequestMethod.GET)
 	public ModelAndView myPage(HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("member");
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map = bankMemberService.getMyPage(bankMembersDTO);
+//		
+//		mv.addObject("dto", map);
+		
 		bankMembersDTO = bankMemberService.getMyPage(bankMembersDTO);
+		//List<BankAccountDTO> ar = bankAccountService.getList(bankMembersDTO);
+		
+		//mv.addObject("list", ar);
 		mv.addObject("dto", bankMembersDTO);
-		mv.setViewName("member/myPage");
+		mv.setViewName("members/myPage");
+		
 		return mv;
 	}
 

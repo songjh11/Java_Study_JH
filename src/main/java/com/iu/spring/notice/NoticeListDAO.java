@@ -21,9 +21,8 @@ public class NoticeListDAO implements NoticeDAO {
 	
 	@Override
 	//추가
-	public int addNotice(NoticeDTO noticeDTO) throws Exception{
-		int result = 0;
-		return result;
+	public int addNotice() throws Exception{
+		return sqlSession.insert(NAMESPACE+"addNotice");
 		
 	}
 	
@@ -45,14 +44,13 @@ public class NoticeListDAO implements NoticeDAO {
 	@Override
 	//조회수증가
 	public int updateHit (NoticeDTO noticeDTO) throws Exception{
-		int result = 0;
-		return result;
+		return sqlSession.update(NAMESPACE+"updateHit", noticeDTO);
 	}
 	
 	@Override
 	//글 한개 조회
 	public NoticeDTO getDetail(NoticeDTO noticeDTO) throws Exception{
-		return noticeDTO;
+		return sqlSession.selectOne(NAMESPACE+"getDetail", noticeDTO);
 	}
 	
 

@@ -12,6 +12,12 @@ public class BankAccountDTO {
     private Date accountDate;
     private BankBookDTO bankBookDTO;
     
+	public BankBookDTO getBankBookDTO() {
+		return bankBookDTO;
+	}
+	public void setBankBookDTO(BankBookDTO bankBookDTO) {
+		this.bankBookDTO = bankBookDTO;
+	}
 	public int getAccountNum() {
 		return accountNum;
 	}

@@ -17,13 +17,13 @@ public class NoticeService {
 	}
 	
 
-//	//추가
-//	public int addNotice(NoticeDTO noticeDTO) throws Exception{
-//		
-//		
-//		
-//	}
-//	
+	//추가
+	public int addNotice() throws Exception{
+		return noticeListDAO.addNotice();
+		
+		
+	}
+	
 
 //	//수정
 //	public int updateNotice(NoticeDTO noticeDTO) throws Exception{
@@ -44,10 +44,10 @@ public class NoticeService {
 //	}
 //	
 
-//	//글 한개 조회
-//	public NoticeDTO getDetail(NoticeDTO noticeDTO) throws Exception{
-//		
-//	}
-//	
+	//글 한개 조회
+	public NoticeDTO getDetail(NoticeDTO noticeDTO) throws Exception{
+		return noticeListDAO.getDetail(noticeDTO);
+	}
+	
 
 }

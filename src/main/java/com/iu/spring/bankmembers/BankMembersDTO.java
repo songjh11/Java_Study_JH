@@ -13,8 +13,15 @@ public class BankMembersDTO {
 		private String email;
 		private String phone;
 		private List<BankAccountDTO> bankAccountDTO;
-		private List<BankBookDTO> bankBookDTO;
 
+		public List<BankAccountDTO> getBankAccountDTO() {
+			return bankAccountDTO;
+		}
+		public void setBankAccountDTO(List<BankAccountDTO> bankAccountDTO) {
+			this.bankAccountDTO = bankAccountDTO;
+		}
+	
+		
 		public String getUserName() {
 			return userName;
 		}

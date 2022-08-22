@@ -7,11 +7,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iu.spring.bankaccount.BankAccountDTO;
+import com.iu.spring.bankaccount.BankAccountService;
+
 @Service
 public class BankMemberService {
 	
 	@Autowired
 	private BankMembersDAO bankMembersDAO;
+	
+	@Autowired
+	private BankAccountService bankAccountService;
 
 	public BankMembersDTO getLogin(BankMembersDTO bankMembersDTO) throws Exception {
 		return bankMembersDAO.getLogin(bankMembersDTO);
@@ -27,14 +33,19 @@ public class BankMemberService {
 		}
 
 		
-		public Map<String, Object> getMyPage(BankMembersDTO bankMembersDTO) throws Exception {
-			Map<String, Object> map = new HashMap<String, Object>();
-			List<BankMembersDTO> ar = bankMembersDAO.getMyPage(bankMembersDTO);
-			map.put("list", ar);
-			map.put("dto", bankMembersDTO);
-			return map;
-		}
+//		public Map<String, Object> getMyPage(BankMembersDTO bankMembersDTO) throws Exception {
+//			Map<String, Object> map = new HashMap<String, Object>();
+//			bankMembersDTO = bankMembersDAO.getMyPage(bankMembersDTO);
+//			List<BankAccountDTO> ar = bankAccountService.getList(bankMembersDTO); 
+//			map.put("list", ar);
+//			map.put("dto", bankMembersDTO);
+//			return map;
+//		}
 	
+		public BankMembersDTO getMyPage(BankMembersDTO bankMembersDTO) throws Exception{
+			return bankMembersDAO.getMyPage(bankMembersDTO);
+		}
+		
 	
 	
 	
