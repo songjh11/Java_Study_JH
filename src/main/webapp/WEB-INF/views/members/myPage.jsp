@@ -19,6 +19,12 @@
 
 <section class="container-fluid col-lg-4">
 	<div class="row">
+		<h1>${map}</h1>
+		<p>ID: ${map.dtp.userName}</p>
+		<p></p>
+		<p></p>
+		<p></p>
+	-	
 	<table class="table table-bordered border-primary">
 	  <thead>
 	    <tr>	
@@ -31,7 +37,7 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	  <c:forEach items="${pageMember}" var="memberDTO">
+	  <c:forEach items="${map.list}" var="memberDTO">
 	    	<tr>
 				<td>${memberDTO.userName}</td>
 				<td>${memberDTO.name}</td>	
