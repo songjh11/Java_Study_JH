@@ -1,11 +1,16 @@
 package com.iu.spring.bankbook;
 
+import java.util.List;
+
+import com.iu.spring.bankaccount.BankAccountDTO;
+
 public class BankBookDTO {
 
 	private Long bookNum;
 	private String bookName;
 	private Double bookRate;
 	private Integer bookSale;
+	private List<BankAccountDTO> bankAccountDTO;
 	
 	public Long getBookNum() {
 		return bookNum;

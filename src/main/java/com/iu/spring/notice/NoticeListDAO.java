@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public abstract class NoticeListDAO implements NoticeDAO {
+public class NoticeListDAO implements NoticeDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;

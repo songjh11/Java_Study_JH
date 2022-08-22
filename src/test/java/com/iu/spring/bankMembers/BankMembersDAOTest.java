@@ -45,6 +45,14 @@ public class BankMembersDAOTest extends MyAbstractTest {
 			List<BankMembersDTO> ar = bankMemberService.getSearchById("a");
 			assertEquals(0, ar.size());
 		}
+		
+		@Test
+		public void getListTest() throws Exception{
+			BankMembersDTO bankMembersDTO = new BankMembersDTO();
+			bankMembersDTO.setUserName("1234");
+			List<BankMembersDTO> ar = bankMemberService.getMyPage(bankMembersDTO);
+			assertNotEquals(0, ar.size());
+		}
 
 	
 

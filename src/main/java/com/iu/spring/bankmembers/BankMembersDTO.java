@@ -1,5 +1,10 @@
 package com.iu.spring.bankmembers;
 
+import java.util.List;
+
+import com.iu.spring.bankaccount.BankAccountDTO;
+import com.iu.spring.bankbook.BankBookDTO;
+
 public class BankMembersDTO {
 	
 		private String userName;
@@ -7,6 +12,8 @@ public class BankMembersDTO {
 		private String name; 
 		private String email;
 		private String phone;
+		private List<BankAccountDTO> bankAccountDTO;
+		private List<BankBookDTO> bankBookDTO;
 
 		public String getUserName() {
 			return userName;

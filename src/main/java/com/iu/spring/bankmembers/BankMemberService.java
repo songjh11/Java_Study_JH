@@ -1,6 +1,8 @@
 package com.iu.spring.bankmembers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,14 @@ public class BankMemberService {
 				return bankMembersDAO.getSearchById(search);
 		}
 
+		
+		public Map<String, Object> getMyPage(BankMembersDTO bankMembersDTO) throws Exception {
+			Map<String, Object> map = new HashMap<String, Object>();
+			List<BankMembersDTO> ar = bankMembersDAO.getMyPage(bankMembersDTO);
+			map.put("list", ar);
+			map.put("dto", bankMembersDTO);
+			return map;
+		}
 	
 	
 	

@@ -17,7 +17,7 @@
                         <c:choose>
 	                        	<c:when test="${not empty member}">                        
 		                        <a class="nav-link" href="/members/logout.do">Logout</a>
-		                        <a class="nav-link" href="#">My Page</a>
+		                        <a class="nav-link" href="/members/myPage.do?userName=${sessionScope.member.userName}">My Page</a>
 	                        </c:when>
 	                        <c:otherwise>
 		                        <a class="nav-link" href="/members/login.do">로그인</a>

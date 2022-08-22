@@ -4,8 +4,24 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.iu.spring.bankaccount.BankAccountDAO">
-	<insert id="setAccount" parameterType="com.iu.spring.bankaccount.BankAccountDTO">
+	<insert id="setAccount" parameterType="BankAccountDTO">
 		INSERT INTO BANKACCOUNT VALUES (ACCOUNT_seq.NEXTVAL, #{userName}, #{bookNum}, SYSDATE)
 	</insert>
+	<select id="getListByUserName" parameterType="BankMembersDTO" resultMap="getListByUserNameResult">
+			SELECT A.ACCOUNTNUM, B.BOOKNAME, A.ACCOUNTDATE
+			FROM BANKACCOUNT A
+				INNER JOIN
+					BANKBOOK B
+					ON (A.BOOKNUM=B.BOOKNUM)
+					WHERE A.USERNAME = #{userName}
+	</select>
+	
+	<resultMap type="BankAccountDTO" id="getListByUserNameResult">
+		<id column="ACCOUNTNUM" property="accountNum"/>
+		<result column="ACCOUNTDATE" property="accountDate"/>
+		<association property="bankBookDTO" javaType="BankBookDTO">
+		<result column="BOOKNAME" property="bookName"/>
+		</association>
+	</resultMap>
 
 </mapper>

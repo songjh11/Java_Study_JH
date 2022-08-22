@@ -2,12 +2,16 @@ package com.iu.spring.bankaccount;
 
 import java.sql.Date;
 
+import com.iu.spring.bankbook.BankBookDTO;
+
 public class BankAccountDTO {
 
 	private int accountNum;
     private String userName;
     private Long bookNum;
     private Date accountDate;
+    private BankBookDTO bankBookDTO;
+    
 	public int getAccountNum() {
 		return accountNum;
 	}

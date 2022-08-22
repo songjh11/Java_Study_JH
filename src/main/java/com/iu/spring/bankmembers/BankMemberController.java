@@ -1,6 +1,8 @@
 package com.iu.spring.bankmembers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +21,16 @@ public class BankMemberController {
 	
 	@Autowired
 	private BankMemberService bankMemberService;
+	
+	@RequestMapping (value="myPage.do", method=RequestMethod.GET)
+	public ModelAndView myPage(HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		BankMembersDTO bankMembersDTO = (BankMembersDTO)session.getAttribute("member");
+		bankMembersDTO = bankMemberService.getMyPage(bankMembersDTO);
+		mv.addObject("dto", bankMembersDTO);
+		mv.setViewName("member/myPage");
+		return mv;
+	}
 
 	@RequestMapping (value="logout.do", method=RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {

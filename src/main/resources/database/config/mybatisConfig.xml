@@ -8,6 +8,7 @@
 				<typeAlias type="com.iu.spring.bankbook.BankBookDTO" alias="BankBookDTO"/>
 				<typeAlias type="com.iu.spring.bankmembers.BankMembersDTO" alias="BankMembersDTO"/>			
 				<typeAlias type="java.lang.String" alias="String"/>
+				<typeAlias type="com.iu.spring.bankaccount.BankAccountDTO" alias="BankAccountDTO"/>
 		 		<typeAlias type="com.iu.spring.notice.NoticeDTO" alias="NoticeDTO"/> 
 
 			</typeAliases>
