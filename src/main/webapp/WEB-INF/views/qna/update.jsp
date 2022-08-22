@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Notice Add</title>
+<title>QnA Update</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
@@ -16,16 +16,19 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <br><br>
-<h1 class="align-center">Notice Add Page</h1>
+<h1 class="align-center">QnA Update Page</h1>
 <br>
-<form action="add.do" method = "POST">
+<form action="update.do" method = "POST">
 <section class="container-fluid col-lg-4">
 	<div class="row">
 		<table class="table table-bordered border-primary">
 	  <thead>
+	  <tr>
+	    <th colspan="2"><input type="hidden" name="num" value="${updateQ.num}"></th>
+	  </tr>
 	    <tr>
 	      <th scope="col">제목</th>
-			<td><input type="text" name="title"> </td>
+			<td><input type="text" name="title" value="${updateQ.title}"></td>
 	    </tr>
 	    <tr>
 	      <th scope="col">작성자</th>
@@ -37,11 +40,11 @@
 				<th scope="col" colspan="2">내용</th>
 			</tr>
 			<tr>	
-				<td colspan="2"><textarea rows="30" cols="70" name="contents"></textarea></td>		
+				<td colspan="2"><textarea rows="30" cols="70" name="contents" value="${updateQ.contents}">${updateText.contents}</textarea></td>		
 			</tr>
 	   </tbody>
 </table>
-<button type="submit" class="btn btn-primary">공지 등록</button>
+<button type="submit" class="btn btn-primary">QnA 수정</button>
 </div>
 </section>
 <br><br>

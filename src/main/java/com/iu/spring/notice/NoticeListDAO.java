@@ -21,24 +21,22 @@ public class NoticeListDAO implements NoticeDAO {
 	
 	@Override
 	//추가
-	public int addNotice() throws Exception{
-		return sqlSession.insert(NAMESPACE+"addNotice");
+	public int addNotice(NoticeDTO noticeDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"addNotice", noticeDTO);
 		
 	}
 	
 	@Override
 	//수정
 	public int updateNotice(NoticeDTO noticeDTO) throws Exception{
-		int result = 0;
-		return result;
+		return sqlSession.update(NAMESPACE+"updateNotice", noticeDTO);
 	}
 	
 
 	@Override
 	//삭제
 	public int deleteNotice (NoticeDTO noticeDTO) throws Exception{
-		int result = 0;
-		return result;
+		return sqlSession.delete(NAMESPACE+"deleteNotice", noticeDTO);
 	}
 	
 	@Override

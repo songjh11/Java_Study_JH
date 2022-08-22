@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Notice Detail</title>
+<title>QnA Detail</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
@@ -15,7 +15,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <br><br>
-<h1 class="align-center">Notice Detail Page</h1>
+<h1 class="align-center">QnA Detail Page</h1>
 <br>
 
 <section class="container-fluid col-lg-5">
@@ -29,27 +29,27 @@
 	      <td>조회수</td>
 	    </tr>
 	    	<tr>
-				<td>${text.num}</td>
-				<td>${text.title}</td>		
-				<td>${text.writer}</td>	
-				<td>${text.regDate}</td>
-				<td>${text.hit}</td>		
+				<td>${qText.num}</td>
+				<td>${qText.title}</td>		
+				<td>${qText.writer}</td>	
+				<td>${qText.regDate}</td>
+				<td>${qText.hit}</td>		
 			</tr>
 	    <tr>	
 	      <td colspan="5">내용</td>
 	    </tr>
 			<tr>
-				<td colspan="5">${text.contents}</td>						
+				<td colspan="5">${qText.contents}</td>						
 			</tr>
 	   </tbody>
 </table>
 <br><br>
 <div class="align-center">
-<a href = "./list.do"><button class="btn btn-primary">공지 목록 보기</button></a>
+<a href = "./list.do"><button class="btn btn-primary">QnA 목록 보기</button></a>
 
-<c:if test="${sessionScope.member.userName eq 'Manager'}">
-<a href= "./update.do?num=${text.num}"><button class="btn btn-primary">공지 수정</button></a>
-<a href="./delete.do?num=${text.num}"><button class="btn btn-primary">공지 삭제</button></a>
+<c:if test="${sessionScope.member.userName eq qText.writer}">
+<a href= "./update.do?num=${qText.num}"><button class="btn btn-primary">QnA 수정</button></a>
+<a href="./delete.do?num=${qText.num}"><button class="btn btn-primary">QnA 삭제</button></a>
 </c:if>
 </div>
 

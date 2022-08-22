@@ -18,31 +18,31 @@ public class NoticeService {
 	
 
 	//추가
-	public int addNotice() throws Exception{
-		return noticeListDAO.addNotice();
+	public int addNotice(NoticeDTO noticeDTO) throws Exception{
+		return noticeListDAO.addNotice(noticeDTO);
 		
 		
 	}
 	
 
-//	//수정
-//	public int updateNotice(NoticeDTO noticeDTO) throws Exception{
-//		
-//	}
-//	
-//
+	//수정
+	public int updateNotice(NoticeDTO noticeDTO) throws Exception{
+		return noticeListDAO.updateNotice(noticeDTO);
+	}
+	
 
-//	//삭제
-//	public int deleteNotice (NoticeDTO noticeDTO) throws Exception{
-//		
-//	}
-//	
 
-//	//조회수증가
-//	public int updateHit (NoticeDTO noticeDTO) throws Exception{
-//		
-//	}
-//	
+	//삭제
+	public int deleteNotice (NoticeDTO noticeDTO) throws Exception{
+		return noticeListDAO.deleteNotice(noticeDTO);
+	}
+	
+
+	//조회수증가
+	public int updateHit (NoticeDTO noticeDTO) throws Exception{
+		return noticeListDAO.updateHit(noticeDTO);
+	}
+	
 
 	//글 한개 조회
 	public NoticeDTO getDetail(NoticeDTO noticeDTO) throws Exception{

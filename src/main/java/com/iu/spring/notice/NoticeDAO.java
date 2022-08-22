@@ -7,7 +7,7 @@ public interface NoticeDAO {
 	
 	public List<NoticeDTO> getList()throws Exception;
 	
-	public int addNotice() throws Exception;
+	public int addNotice(NoticeDTO noticeDTO) throws Exception;
 	
 	public int updateNotice(NoticeDTO noticeDTO) throws Exception;
 
