@@ -1,42 +1,20 @@
-package com.iu.spring.qna;
+package com.iu.spring.board.impl;
 
 import java.sql.Date;
 
-public class QnADTO {
+public class BoardDTO {
 	
-	private Integer num;
+	private Long num; 
 	private String title;
 	private String contents;
 	private String writer;
 	private Date regDate;
-	private Integer hit;
-	private Integer ref;
-	private Integer step;
-	private Integer depth;
-
-	public Integer getRef() {
-		return ref;
-	}
-	public void setRef(Integer ref) {
-		this.ref = ref;
-	}
-	public Integer getStep() {
-		return step;
-	}
-	public void setStep(Integer step) {
-		this.step = step;
-	}
-	public Integer getDepth() {
-		return depth;
-	}
-	public void setDepth(Integer depth) {
-		this.depth = depth;
-	}
+	private Long hit;
 	
-	public Integer getNum() {
+	public Long getNum() {
 		return num;
 	}
-	public void setNum(Integer num) {
+	public void setNum(Long num) {
 		this.num = num;
 	}
 	public String getTitle() {
@@ -63,13 +41,15 @@ public class QnADTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public Integer getHit() {
+	public Long getHit() {
 		return hit;
 	}
-	public void setHit(Integer hit) {
+	public void setHit(Long hit) {
 		this.hit = hit;
 	}
-
+	
+	
+	
 	
 
 }

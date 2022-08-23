@@ -45,9 +45,7 @@ public class BankAccountController {
 			mv.setViewName("redirect:../");
 			return mv;
 		}
-		
 		return mv;
-		
 	}
 	
 }
