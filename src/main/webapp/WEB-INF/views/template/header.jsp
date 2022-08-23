@@ -4,7 +4,7 @@
 	 <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img width=50 heigh=50 alt="뉴진스 토끼" src="/resources/images/tjq6bQ3X_400x400.jpg"></a>
+                <a class="navbar-brand" href="#"><img width=50 heigh=50 alt="토곰이" src="/resources/images/6f257201751a95c37eb3493912e25cdf8f324a0b9c48f77dbce3a43bd11ce785.png"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -27,6 +27,7 @@
                         </c:choose>
 		                        <a class="nav-link" href="/members/search.do">회원검색</a>
                     </div>
+           		 </div>
             </div>
         </nav>
  </header>

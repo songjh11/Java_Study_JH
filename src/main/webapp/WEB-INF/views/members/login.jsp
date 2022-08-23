@@ -15,7 +15,11 @@
 <c:import url="../template/header.jsp"></c:import>
 <br><br>
 <h1 class="align-center">Login page</h1>
-<br><br>
+<br>
+<div class="align-center">
+	<img src="/resources/images/6f257201751a95c37eb3493912e25cdf2df16ed7012359e344d47930e49e9310.png">
+</div>
+<br>
 <section class="container-fluid col-lg-3">
 	<div class="row">
 		<form action="login.do" method="post">
