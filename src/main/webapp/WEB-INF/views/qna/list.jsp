@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Set Account</title>
+<title>QnA</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
@@ -14,34 +14,39 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <br><br>
-<h1 class="align-center">Add Page</h1>
+<h1 class="align-center">QnA Page</h1>
 <br><br>
-<form action="add.do" method = "POST">
-<section class="container-fluid col-lg-4">
+<section class="container-fluid col-lg-5">
 	<div class="row">
 	<table class="table table-bordered border-primary">
 	  <thead>
 	    <tr>
-	      <th scope="col">ID</th>
-	      <th scope="col">상품 번호</th>
+	      <th scope="col">#</th>	
+	      <th scope="col">TITLE</th>
+	      <th scope="col">WRITER</th>
+	      <th scope="col">DATE</th>
+	      <th scope="col">HIT</th>
 	    </tr>
 	  </thead>
-	  <tbody>
+<c:forEach items="${list}" var="dto">
 			<tr>
-				<td><input type=text name="userName" readonly value="${account.userName}"></td>
-				<td><input type=text name="bookNum" readonly value="${account.bookNum}"></td>	
+				<td>${dto.num}</td>
+				<td><a href="./detail.do?num=${dto.num}">${dto.title}</a></td>
+				<td>${dto.writer}</td>
+				<td>${dto.regDate}</td>
+				<td>${dto.hit}</td>
 			</tr>
-	   </tbody>
+</c:forEach>
 </table>
-<br>
-<br>
+<c:if test="${not empty sessionScope.member}">
 <div class="align-center">
-<button type="submit" class="btn btn-primary">계좌 개설</button>
+	<a href = "./add.do"><button class="btn btn-primary">QnA 작성</button></a>
 </div>
+</c:if>
 </div>
 </section>
-<br>
-</form> 
+<br><br>
+
 <c:import url="../template/footer.jsp"></c:import>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>

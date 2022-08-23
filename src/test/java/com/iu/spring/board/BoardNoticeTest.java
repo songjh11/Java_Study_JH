@@ -11,7 +11,7 @@ import com.iu.spring.MyAbstractTest;
 import com.iu.spring.board.impl.BoardDTO;
 import com.iu.spring.board.notice.NoticeDAO;
 
-public class BoardTest2 extends MyAbstractTest {
+public class BoardNoticeTest extends MyAbstractTest {
 
 	@Autowired
 	private NoticeDAO noticeDAO;
