@@ -17,16 +17,18 @@ public class BoardQnaTest extends MyAbstractTest {
 	@Autowired
 	private QnaDAO qnaDAO;
 	
+	
+	
 //	@Test
 //	public void getList() throws Exception{
 //		List<BoardDTO> ar = qnaDAO.getList();
 //		assertEquals(0, ar.size());
 //	}
-		@Test
-		public void count() throws Exception{
-		long count = qnaDAO.getPageCount();
-		assertEquals(10, count);
-		}
+//		@Test
+//		public void count() throws Exception{
+//		long count = qnaDAO.getPageCount();
+//		assertEquals(10, count);
+//		}
 	
 //		@Test
 //		public void getDetail() throws Exception{

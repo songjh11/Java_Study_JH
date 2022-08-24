@@ -12,7 +12,7 @@
 		 	 	<typeAlias type="com.iu.spring.board.notice.NoticeDTO" alias="NoticeDTO"/> 
 		 		<typeAlias type="com.iu.spring.board.qna.QnaDTO" alias="QnaDTO"/>
 		 		<typeAlias type="com.iu.spring.board.impl.BoardDTO" alias="BoardDTO"/>
-				<typeAlias type="java.util.List" alias="List"/>
+				<typeAlias type="com.iu.spring.util.Pager" alias="Pager"/>
 				<typeAlias type="java.lang.Long" alias="Long"/>
 			</typeAliases>
 		</configuration>

@@ -2,10 +2,12 @@ package com.iu.spring.board.impl;
 
 import java.util.List;
 
+import com.iu.spring.util.Pager;
+
 public interface BoardService {
 	
 	//글 목록
-	public List<BoardDTO> getList(Long page) throws Exception;
+	public List<BoardDTO> getList(Pager pager) throws Exception;
 			
 	//글 조회
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;
@@ -22,7 +24,4 @@ public interface BoardService {
 	//조회수 증가
 	public int updateHit(BoardDTO boardDTO) throws Exception;
 	
-	//페이지 수 만들기
-	public Long getPageCount() throws Exception;
-
 }

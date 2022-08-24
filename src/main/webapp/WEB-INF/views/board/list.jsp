@@ -9,6 +9,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
+    #wrapper {
+				width: 250px;
+				margin-left: auto;
+				margin-right: auto;
+				}
 </style>
 </head>
 <body>
@@ -28,20 +33,39 @@
 	      <th scope="col">HIT</th>
 	    </tr>
 	  </thead>
-<c:forEach items="${list}" var="dto">
-			<tr>
-				<td>${dto.num}</td>
-				<td><a href="./detail.do?num=${dto.num}">${dto.title}</a></td>
-				<td>${dto.writer}</td>
-				<td>${dto.regDate}</td>
-				<td>${dto.hit}</td>
-			</tr>
-</c:forEach>
-</table>
-</div>
+				<c:forEach items="${list}" var="dto">
+					<tr>
+						<td>${dto.num}</td>
+						<td><a href="./detail.do?num=${dto.num}">${dto.title}</a></td>
+						<td>${dto.writer}</td>
+						<td>${dto.regDate}</td>
+						<td>${dto.hit}</td>
+					</tr>
+				</c:forEach>
+		</table>
+	</div>
 </section>
+
+<nav aria-label="Page navigation example" >
+  <ul class="pagination" id="wrapper">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			<li class="page-item"><a class="page-link" href="./list.do?page=${i}"> ${i}</a> </li>
+		</c:forEach>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
 <br>
-<div>
+<div >
 <c:choose>
 	<c:when test="${board eq 'Notice'}">
 		<c:if test="${sessionScope.member.userName eq 'Manager'}">

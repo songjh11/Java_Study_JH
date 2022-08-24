@@ -6,7 +6,7 @@
 		    
 		 <mapper namespace="com.iu.spring.board.qna.QnaDAO">
 		 
-		 	<select id="getList" resultType="QnaDTO" parameterType="java.util.Map">
+		 	<select id="getList" resultType="QnaDTO" parameterType="Pager">
 		 		SELECT * FROM 
 		 		(SELECT ROWNUM R, Q.* FROM
 		 		(SELECT * FROM QNA ORDER BY NUM DESC) Q)

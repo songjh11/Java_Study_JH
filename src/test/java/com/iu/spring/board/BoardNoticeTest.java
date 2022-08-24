@@ -31,24 +31,25 @@ public class BoardNoticeTest extends MyAbstractTest {
 //		assertNull(boardDTO);
 //		}
 //	
-	@Test
-	public void setAdd() throws Exception {
-		for(int i=0; i<100; i++) {
-			
-		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setTitle("Test"+i);
-		boardDTO.setContents("ContentsContentsContentsContents"+i);
-		boardDTO.setWriter("Tester"+i);
-		int result = noticeDAO.setAdd(boardDTO);
-		
-		if(i%10==0) {
-			Thread.sleep(500);
-		}
-		
-		}
-		System.out.println("Finish!");
-//		assertEquals(1, result);
-	}
+//	@Test
+//	public void setAdd() throws Exception {
+//		for(int i=0; i<100; i++) {
+//			
+//		BoardDTO boardDTO = new BoardDTO();
+//		boardDTO.setTitle("Test"+i);
+//		boardDTO.setContents("ContentsContentsContentsContents"+i);
+//		boardDTO.setWriter("Tester"+i);
+//		int result = noticeDAO.setAdd(boardDTO);
+//		
+//		if(i%10==0) {
+//			Thread.sleep(500);
+//		}
+//		
+//		}
+//		System.out.println("Finish!");
+//		assertEquals(1, result);}
+	
+
 //
 //	@Test
 //	public void setUpdate() throws Exception {
@@ -69,3 +70,4 @@ public class BoardNoticeTest extends MyAbstractTest {
 //		assertEquals(1, result);
 //	}
 }
+
