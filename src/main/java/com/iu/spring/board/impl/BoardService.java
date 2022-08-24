@@ -18,5 +18,8 @@ public interface BoardService {
 	
 	//글 삭제
 	public int setDelete(BoardDTO boardDTO) throws Exception;
+	
+	//조회수 증가
+	public int updateHit(BoardDTO boardDTO) throws Exception;
 
 }

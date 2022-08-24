@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA Add</title>
+<title>Notice Update</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
@@ -14,16 +14,20 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <br><br>
-<h1 class="align-center">QnA Add Page</h1>
+<h1 class="align-center">Notice Update Page</h1>
 <br><br>
+
 <section class="container-fluid col-lg-4">
 	<div class="row">
-<form action="add.do" method = "POST">
+<form action="update.do" method = "POST">
 		<table class="table table-bordered border-primary">
 	  <thead>
+	  <tr>
+	    <th colspan="2"><input type="hidden" name="num" value="${boardDTO.num}"></th>
+	  </tr>
 	    <tr>
 	      <th scope="col">TITLE</th>
-			<td><input type="text" name="title"> </td>
+			<td><input type="text" name="title" value="${boardDTO.title}"></td>
 	    </tr>
 	    <tr>
 	      <th scope="col">WRITER</th>
@@ -35,17 +39,18 @@
 				<th scope="col" colspan="2">CONTENTS</th>
 			</tr>
 			<tr>	
-				<td colspan="2"><textarea rows="30" cols="70" name="contents"></textarea></td>		
+				<td colspan="2"><textarea rows="30" cols="70" name="contents" value="${boardDTO.contents}">${boardDTO.contents}</textarea></td>		
 			</tr>
 	   </tbody>
 </table>
-			<div class="align-center">
-			<button type="submit" class="btn btn-primary">QnA 등록</button>
-			</div>
-</form>
+	<div class="align-center">
+	<button type="submit" class="btn btn-primary">공지 수정</button>
+	</div>
+</form> 
 </div>
 </section>
 <br><br>
+
 <c:import url="../template/footer.jsp"></c:import>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>

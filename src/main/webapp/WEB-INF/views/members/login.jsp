@@ -37,7 +37,7 @@
 		    <label class="form-check-label" for="exampleCheck1">Check me out</label>
 		  </div>
 		  <div class="align-center">
-		  <button type="submit" class="btn btn-primary">Submit</button>
+		  <button type="submit" class="btn btn-primary">로그인</button>
 		  </div>
 		</form>
 

@@ -31,6 +31,7 @@ public class NoticeController {
 	//글 상세
 	@RequestMapping (value="detail.do", method=RequestMethod.GET)
 	public String getDetail(BoardDTO boardDTO, Model model) throws Exception{
+		noticeService.updateHit(boardDTO);
 		boardDTO = noticeService.getDetail(boardDTO);
 		model.addAttribute("boardDTO", boardDTO);
 		return "notice/detail";

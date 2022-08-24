@@ -16,43 +16,42 @@
 <br><br>
 <h1 class="align-center">QnA Detail Page</h1>
 <br><br>
-<form action="detail.do" method="GET">
 <section class="container-fluid col-lg-5">
 	<div class="row">
 	<table class="table table-bordered border-primary">
 	    <tr>	
-	      <td>글 번호</td>
-	      <td>글 제목</td>
-	      <td>작성자</td>
-	      <td>작성일자</td>
-	      <td>조회수</td>
+	      <td>#</td>
+	      <td>TITLE</td>
+	      <td>WRITER</td>
+	      <td>DATE</td>
+	      <td>HIT</td>
 	    </tr>
 	    	<tr>
 				<td>${qnaDTO.num}</td>
 				<td>${qnaDTO.title}</td>		
-				<td>${qnaDTO.writer}</td>	
-				<td>${qnaDTO.regDate}</td>
+				<td>${qnaDTO.writer}</td>
+				<td>${qnaDTO.regDate}</td>	
 				<td>${qnaDTO.hit}</td>		
 			</tr>
-	    <tr>	
-	      <td colspan="5">내용</td>
-	    </tr>
+		    <tr>	
+		      <td colspan="5">CONTENTS</td>
+		    </tr>
 			<tr>
 				<td colspan="5">${qnaDTO.contents}</td>						
 			</tr>
 </table>
 <br><br>
-</form>
-<div class="align-center">
-<a href = "./list.do"><button class="btn btn-primary">QnA 목록 보기</button></a>
-<c:if test="${sessionScope.member.userName eq qnaDTO.writer}">
-<a href= "./update.do?num=${qnaDTO.num}"><button class="btn btn-primary">QnA 수정</button></a>
-<a href="./delete.do?num=${qnaDTO.num}"><button class="btn btn-primary">QnA 삭제</button></a>
-</c:if>
-</div>
-
 </div>
 </section>
+
+<div class="align-center">
+<a href = "./list.do"><button class="btn btn-primary">QnA 목록 보기</button></a>
+	<c:if test="${sessionScope.member.userName eq qnaDTO.writer}">
+	<a href= "./update.do?num=${qnaDTO.num}"><button class="btn btn-primary">QnA 수정</button></a>
+	<a href="./delete.do?num=${qnaDTO.num}"><button class="btn btn-primary">QnA 삭제</button></a>
+	</c:if>
+</div>
+<br><br>
 
 <c:import url="../template/footer.jsp"></c:import>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

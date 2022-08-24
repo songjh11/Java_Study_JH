@@ -29,6 +29,7 @@ public class QnaController {
 		@RequestMapping(value="detail.do", method = RequestMethod.GET)
 		public ModelAndView getDetail(BoardDTO boardDTO) throws Exception {
 			ModelAndView view = new ModelAndView();
+			qnaService.updateHit(boardDTO);
 			boardDTO = qnaService.getDetail(boardDTO);
 			view.addObject("qnaDTO", boardDTO);
 			view.setViewName("qna/detail");

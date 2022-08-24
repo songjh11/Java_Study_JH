@@ -26,6 +26,10 @@
     	 	<delete id="setDelete" parameterType="BoardDTO">
     	 		DELETE QNA WHERE NUM = #{num}
     	 	</delete>
+    	 	
+    	 	<update id="updateHit" parameterType="BoardDTO">
+	    	 	UPDATE QNA SET HIT=HIT+1 WHERE NUM=#{num}
+    	 	</update>
 		 	
 		 
 		 </mapper>

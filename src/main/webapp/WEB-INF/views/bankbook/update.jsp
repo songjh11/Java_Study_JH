@@ -23,7 +23,7 @@
 	<table class="table table-bordered border-primary">
 	  <thead>
 	  <tr>
-		<td colspan="2"><input type="hidden" name="bookNum" value=${update.bookNum}></td>
+		<td colspan="2"><input type="hidden" name="bookNum" value="${update.bookNum}"></td>
 		</tr>
 	    <tr>
 	      <th scope="col">상품명</th>
@@ -32,8 +32,8 @@
 	  </thead>
 	  <tbody>
 			<tr>
-				<td><input type="text" name="bookName" value=${update.bookName}></td>
-				<td><input type="text" name="bookRate" value=${update.bookRate}></td>
+				<td><input type="text" name="bookName" value="${update.bookName}"></td>
+				<td><input type="text" name="bookRate" value="${update.bookRate}"></td>
 			</tr>
 	   </tbody>
 </table>
