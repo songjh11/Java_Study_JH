@@ -5,8 +5,11 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
 		 <mapper namespace="com.iu.spring.board.notice.NoticeDAO">
-		 	<select id="getList" resultType="NoticeDTO">
-		 		SELECT NUM, TITLE, WRITER, REGDATE, HIT FROM NOTICE ORDER BY NUM DESC
+		 	<select id="getList" resultType="NoticeDTO" parameterType="java.util.Map">
+		 		SELECT * FROM
+			    (SELECT ROWNUM R, N.* FROM
+			    (SELECT * FROM NOTICE ORDER BY NUM DESC) N)
+			    WHERE R BETWEEN #{startRow} AND #{lastRow}
 		 	</select>
 		 	
 		 	<select id="getDetail" parameterType="BoardDTO" resultType="NoticeDTO">
@@ -29,6 +32,10 @@
     	 	<update id="updateHit" parameterType="BoardDTO">
     	 		UPDATE NOTICE SET HIT=HIT+1 WHERE NUM=#{num}
     	 	</update>
+    	 	
+    	 	<select id="getPageCount" resultType="Long">
+    	 		SELECT COUNT(NUM) FROM NOTICE
+    	 	</select>
 		 	
 		 
 		 </mapper>

@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.spring.board.impl.BoardDTO;
@@ -17,12 +19,17 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "QnA";
+	}
+	
 		@RequestMapping (value="list.do", method=RequestMethod.GET)
-		public ModelAndView getList() throws Exception {
+		public ModelAndView getList(@RequestParam(defaultValue = "1") Long page) throws Exception {
 			ModelAndView view = new ModelAndView();
-			List<BoardDTO> ar = qnaService.getList();
+			List<BoardDTO> ar = qnaService.getList(page);
 			view.addObject("list", ar);
-			view.setViewName("qna/list");
+			view.setViewName("board/list");
 			return view; 
 			}
 		
@@ -31,14 +38,14 @@ public class QnaController {
 			ModelAndView view = new ModelAndView();
 			qnaService.updateHit(boardDTO);
 			boardDTO = qnaService.getDetail(boardDTO);
-			view.addObject("qnaDTO", boardDTO);
-			view.setViewName("qna/detail");
+			view.addObject("boardDTO", boardDTO);
+			view.setViewName("board/detail");
 			return view;
 		}
 		
 		@RequestMapping(value="add.do", method=RequestMethod.GET)
 		public String setAdd() throws Exception {
-			return "qna/add";
+			return "board/add";
 		}
 		
 		@RequestMapping(value="add.do", method=RequestMethod.POST)
@@ -51,8 +58,8 @@ public class QnaController {
 		
 		@RequestMapping(value="update.do", method=RequestMethod.GET)
 		public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView view) throws Exception {
-			view.addObject("qnaDTO", boardDTO);
-			view.setViewName("qna/update");
+			view.addObject("boardDTO", boardDTO);
+			view.setViewName("board/update");
 			return view;
 							}
 		

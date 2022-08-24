@@ -1,12 +1,13 @@
 package com.iu.spring.board.impl;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface BoardDAO {
 		
 	//글 목록
-		public List<BoardDTO> getList() throws Exception; 
+		public List<BoardDTO> getList(Map< String, Long> map) throws Exception; 
 	
 	//글 상세보기
 		public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;
@@ -22,4 +23,7 @@ public interface BoardDAO {
 	
 	//조회수 증가
 		public int updateHit(BoardDTO boardDTO) throws Exception;
+		
+	//페이지 수 만들기
+		public Long getPageCount() throws Exception;
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Notice Detail</title>
+<title>${board} Detail</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
@@ -14,8 +14,8 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <br><br>
-<h1 class="align-center">Notice Detail Page</h1>
-<br><br>
+<h1 class="align-center">${board} Detail Page</h1>
+<br>
 <section class="container-fluid col-lg-5">
 	<div class="row">
 	<table class="table table-bordered border-primary">
@@ -40,16 +40,25 @@
 				<td colspan="5">${boardDTO.contents}</td>						
 			</tr>
 </table>
-<br><br>
 </div>
 </section>
-
+<br>
 <div class="align-center">
 <a href = "./list.do"><button class="btn btn-primary">공지 목록 보기</button></a>
-	<c:if test="${sessionScope.member.userName eq 'Manager'}">
-	<a href= "./update.do?num=${boardDTO.num}"><button class="btn btn-primary">공지 수정</button></a>
-	<a href="./delete.do?num=${boardDTO.num}"><button class="btn btn-primary">공지 삭제</button></a>
-	</c:if>
+	<c:choose>
+		<c:when test="${board eq 'Notice'}">
+			<c:if test="${sessionScope.member.userName eq 'Manager'}">
+			<a href= "./update.do?num=${boardDTO.num}"><button class="btn btn-primary">공지 수정</button></a>
+			<a href="./delete.do?num=${boardDTO.num}"><button class="btn btn-primary">공지 삭제</button></a>
+			</c:if>
+		</c:when>
+		<c:otherwise>
+			<c:if test="${sessionScope.member.userName eq boardDTO.writer}">
+			<a href= "./update.do?num=${boardDTO.num}"><button class="btn btn-primary">QnA 수정</button></a>
+			<a href="./delete.do?num=${boardDTO.num}"><button class="btn btn-primary">QnA 삭제</button></a>
+			</c:if>
+		</c:otherwise>
+	</c:choose>
 </div>
 <br><br>
 

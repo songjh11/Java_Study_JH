@@ -16,11 +16,11 @@ public class BoardNoticeTest extends MyAbstractTest {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	@Test
-	public void getList() throws Exception{
-		List<BoardDTO> ar = noticeDAO.getList();
-		assertEquals(0, ar.size());
-	}
+//	@Test
+//	public void getList(Map) throws Exception{
+//		List<BoardDTO> ar = noticeDAO.getList(map);
+//		assertEquals(0, ar.size());
+//	}
 //	
 //	
 //	@Test
@@ -33,12 +33,21 @@ public class BoardNoticeTest extends MyAbstractTest {
 //	
 	@Test
 	public void setAdd() throws Exception {
+		for(int i=0; i<100; i++) {
+			
 		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setTitle("Test");
-		boardDTO.setContents("ContentsContentsContentsContents");
-		boardDTO.setWriter("Tester");
+		boardDTO.setTitle("Test"+i);
+		boardDTO.setContents("ContentsContentsContentsContents"+i);
+		boardDTO.setWriter("Tester"+i);
 		int result = noticeDAO.setAdd(boardDTO);
-		assertEquals(1, result);
+		
+		if(i%10==0) {
+			Thread.sleep(500);
+		}
+		
+		}
+		System.out.println("Finish!");
+//		assertEquals(1, result);
 	}
 //
 //	@Test

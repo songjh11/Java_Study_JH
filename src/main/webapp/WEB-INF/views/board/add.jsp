@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA Update</title>
+<title>${board} Add</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
@@ -14,20 +14,16 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <br><br>
-<h1 class="align-center">QnA Update Page</h1>
+<h1 class="align-center">${board} Add Page</h1>
 <br><br>
-
 <section class="container-fluid col-lg-4">
 	<div class="row">
-<form action="update.do" method = "POST">
+<form action="add.do" method = "POST">
 		<table class="table table-bordered border-primary">
 	  <thead>
-	  <tr>
-	    <th colspan="2"><input type="hidden" name="num" value="${qnaDTO.num}"></th>
-	  </tr>
 	    <tr>
 	      <th scope="col">TITLE</th>
-			<td><input type="text" name="title" value="${qnaDTO.title}"></td>
+			<td><input type="text" name="title"> </td>
 	    </tr>
 	    <tr>
 	      <th scope="col">WRITER</th>
@@ -39,19 +35,30 @@
 				<th scope="col" colspan="2">CONTENTS</th>
 			</tr>
 			<tr>	
-				<td colspan="2"><textarea rows="30" cols="70" name="contents" value="${qnaDTO.contents}">${qnaDTO.contents}</textarea></td>		
+				<td colspan="2"><textarea rows="30" cols="70" name="contents"></textarea></td>		
 			</tr>
 	   </tbody>
 </table>
-<br><br>
-<div class="align-center">
-<button type="submit" class="btn btn-primary">QnA 수정</button>
-</div>
-</form> 
+			<c:choose>
+	<c:when test="${board eq 'Notice'}">
+		<c:if test="${sessionScope.member.userName eq 'Manager'}">
+		<div class="align-center">
+			<a href = "./add.do"><button class="btn btn-primary">공지 등록</button></a>
+		</div>
+		</c:if>
+	</c:when>	
+	<c:otherwise>
+		<c:if test="${not empty sessionScope.member}">
+		<div class="align-center">
+			<a href = "./add.do"><button class="btn btn-primary">QnA 등록</button></a>
+		</div>
+		</c:if>
+	</c:otherwise>
+</c:choose>
+</form>
 </div>
 </section>
 <br><br>
-
 <c:import url="../template/footer.jsp"></c:import>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
