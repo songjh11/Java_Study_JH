@@ -9,11 +9,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
-    #wrapper {
-				width: 250px;
-				margin-left: auto;
-				margin-right: auto;
-				}
 </style>
 </head>
 <body>
@@ -21,7 +16,7 @@
 <br><br>
 <h1 class="align-center">${board} Board</h1>
 <br>
-<section class="container-fluid col-lg-5">
+<section class="container-fluid col-lg-7">
 	<div class="row">
 	<table class="table table-bordered border-primary">
 	  <thead>
@@ -46,20 +41,28 @@
 	</div>
 </section>
 
-<nav aria-label="Page navigation example" >
-  <ul class="pagination" id="wrapper">
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+  <c:if test="${pager.pre}">
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
+      <a class="page-link" href="./list.do?page=${pager.startNum-1}">Previous</a>
     </li>
-		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+  </c:if>
+    
+	    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 			<li class="page-item"><a class="page-link" href="./list.do?page=${i}"> ${i}</a> </li>
 		</c:forEach>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
+	
+<%-- 	<c:choose>
+		<c:when test="${pager.next}">	
+	    	<li class="page-item">
+	    </c:when>
+	    <c:otherwise>
+	    	<li class="page-item disabled">
+	    </c:otherwise>
+	</c:choose> --%>
+	<li class="page-item ${pager.next?'':'disabled'}">
+      <a class="page-link" href="./list.do?page=${pager.lastNum+1}">Next</a>
     </li>
   </ul>
 </nav>
