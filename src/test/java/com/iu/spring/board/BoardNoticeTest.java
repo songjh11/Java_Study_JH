@@ -16,6 +16,8 @@ public class BoardNoticeTest extends MyAbstractTest {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
+	
+	
 //	@Test
 //	public void getList(Map) throws Exception{
 //		List<BoardDTO> ar = noticeDAO.getList(map);

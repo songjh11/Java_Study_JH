@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +26,21 @@ public class QnaController {
 	public String getBoard() {
 		return "QnA";
 	}
+		
+		@PostMapping("reply")
+		public String setReply(QnaDTO qnaDTO) throws Exception{
+			System.out.println(qnaDTO.getNum());
+			int result = qnaService.setReply(qnaDTO);
+			return "redirect:./list.do";
+		}
+		
+		
+		@GetMapping("reply")		
+		public ModelAndView setReply(QnaDTO qnaDTO, ModelAndView view) throws Exception{
+			view.setViewName("board/reply");
+			view.addObject("boardDTO", qnaDTO);
+			return view;
+		}
 	
 		@RequestMapping (value="list.do", method=RequestMethod.GET)
 		public ModelAndView getList(Pager pager) throws Exception {

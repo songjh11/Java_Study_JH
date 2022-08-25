@@ -19,9 +19,9 @@ public class QnaService implements BoardService {
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
-		pager.getRowNum();
-		Long totalCount = qnaDAO.getPageCount();
+		Long totalCount = qnaDAO.getPageCount(pager);
 		pager.getNum(totalCount);
+		pager.getRowNum();
 //		Long totalCount = qnaDAO.getPageCount();
 //		
 //		Long startRow=0L;
@@ -49,6 +49,20 @@ public class QnaService implements BoardService {
 	 * 2. 총 페이지 수 구하기
 	 * */
 	
+	public int setReply (QnaDTO qnaDTO) throws Exception {
+		BoardDTO boardDTO = qnaDAO.getDetail(qnaDTO);
+		QnaDTO parents = (QnaDTO)boardDTO;
+		qnaDTO.setRef(parents.getRef());
+		qnaDTO.setStep(parents.getStep()+1);
+		qnaDTO.setDepth(parents.getDepth()+1);
+		
+		qnaDAO.setStepUpdate(parents);
+		int result = qnaDAO.setReplyAdd(qnaDTO);
+		
+		
+		return result;
+	}
+	
 	
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
@@ -57,7 +71,10 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int setAdd(BoardDTO boardDTO) throws Exception {
-		return qnaDAO.setAdd(boardDTO);
+		System.out.println("insert 전: "+boardDTO.getNum());
+		int result =  qnaDAO.setAdd(boardDTO);
+		System.out.println("insert 후: "+boardDTO.getNum());
+		return result;
 	}
 	
 	@Override

@@ -24,8 +24,8 @@ public class NoticeDAO implements BoardDAO {
 	}
 	
 	@Override
-	public Long getPageCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getPageCount");
+	public Long getPageCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getPageCount", pager);
 		
 	}
 

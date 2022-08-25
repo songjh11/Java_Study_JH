@@ -27,5 +27,5 @@ public interface BoardDAO {
 		public int updateHit(BoardDTO boardDTO) throws Exception;
 		
 	//페이지 수 만들기
-		public Long getPageCount() throws Exception;
+		public Long getPageCount(Pager pager) throws Exception;
 }

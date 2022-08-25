@@ -24,8 +24,8 @@ public class QnaDAO implements BoardDAO{
 	}
 	
 	@Override
-	public Long getPageCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getPageCount");
+	public Long getPageCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getPageCount", pager);
 	}
 	
 	@Override
@@ -53,4 +53,11 @@ public class QnaDAO implements BoardDAO{
 		return sqlSession.update(NAMESPACE+"updateHit", boardDTO);
 	}
 
+	public int setReplyAdd(QnaDTO qnaDTO) {
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
+	}
+	
+	public int setStepUpdate(QnaDTO qnaDTO) {
+		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
 }

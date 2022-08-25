@@ -17,7 +17,24 @@ public class BoardQnaTest extends MyAbstractTest {
 	@Autowired
 	private QnaDAO qnaDAO;
 	
+	@Test
+public void setText() throws Exception {
+	for(int i=0; i<100; i++) {
+		
+	QnaDTO qnaDTO = new QnaDTO();
+	qnaDTO.setTitle("Qna글"+i);
+	qnaDTO.setContents("내용"+i);
+	qnaDTO.setWriter("Manager");
+	int result = qnaDAO.setAdd(qnaDTO);
 	
+	if(i%10==0) {
+		Thread.sleep(500);
+	}
+	
+	}
+	System.out.println("Finish!");
+	
+	}
 	
 //	@Test
 //	public void getList() throws Exception{

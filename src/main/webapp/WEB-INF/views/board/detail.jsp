@@ -44,7 +44,7 @@
 </section>
 <br>
 <div class="align-center">
-<a href = "./list.do"><button class="btn btn-primary">공지 목록 보기</button></a>
+<a href = "./list.do"><button class="btn btn-primary">목록 보기</button></a>
 	<c:choose>
 		<c:when test="${board eq 'Notice'}">
 			<c:if test="${sessionScope.member.userName eq 'Manager'}">
@@ -56,6 +56,9 @@
 			<c:if test="${sessionScope.member.userName eq boardDTO.writer}">
 			<a href= "./update.do?num=${boardDTO.num}"><button class="btn btn-primary">QnA 수정</button></a>
 			<a href="./delete.do?num=${boardDTO.num}"><button class="btn btn-primary">QnA 삭제</button></a>
+			</c:if>
+			<c:if test="${not empty sessionScope.member}">
+			<a href="./reply.do?num=${boardDTO.num}" class="btn btn-primary">reply</a>
 			</c:if>
 		</c:otherwise>
 	</c:choose>
