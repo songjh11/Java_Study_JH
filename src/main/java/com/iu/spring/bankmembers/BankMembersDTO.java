@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.iu.spring.bankaccount.BankAccountDTO;
 import com.iu.spring.bankbook.BankBookDTO;
+import com.iu.spring.file.FileDTO;
 
 public class BankMembersDTO {
 	
@@ -13,7 +14,16 @@ public class BankMembersDTO {
 		private String email;
 		private String phone;
 		private List<BankAccountDTO> bankAccountDTO;
+		private BankMembersFileDTO bankMembersFileDTO;
+		
+		
 
+		public BankMembersFileDTO getBankMembersFileDTO() {
+			return bankMembersFileDTO;
+		}
+		public void setBankMembersFileDTO(BankMembersFileDTO bankMembersFileDTO) {
+			this.bankMembersFileDTO = bankMembersFileDTO;
+		}
 		public List<BankAccountDTO> getBankAccountDTO() {
 			return bankAccountDTO;
 		}

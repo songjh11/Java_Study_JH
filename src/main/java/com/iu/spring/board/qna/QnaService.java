@@ -1,14 +1,21 @@
 package com.iu.spring.board.qna;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.spring.board.impl.BoardDTO;
+import com.iu.spring.board.impl.BoardFileDTO;
 import com.iu.spring.board.impl.BoardService;
+import com.iu.spring.util.AddFiles;
 import com.iu.spring.util.Pager;
 
 @Service
@@ -16,6 +23,9 @@ public class QnaService implements BoardService {
 
 	@Autowired
 	private QnaDAO qnaDAO;
+	
+	@Autowired
+	private ServletContext servletContext;
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -59,7 +69,6 @@ public class QnaService implements BoardService {
 		qnaDAO.setStepUpdate(parents);
 		int result = qnaDAO.setReplyAdd(qnaDTO);
 		
-		
 		return result;
 	}
 	
@@ -70,10 +79,43 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		System.out.println("insert 전: "+boardDTO.getNum());
 		int result =  qnaDAO.setAdd(boardDTO);
 		System.out.println("insert 후: "+boardDTO.getNum());
+		
+		for(MultipartFile mf: files) {
+			if(mf.isEmpty()) {
+				continue;
+			} 
+			String realPath = servletContext.getRealPath("resources/upload/QnA");
+			System.out.println("realPath : "+realPath);
+			
+			File file = new File(realPath);
+			
+			System.out.println(file);
+
+			if(!file.exists()) {
+				file.mkdirs();
+			}
+		
+			String fileName = UUID.randomUUID().toString();
+			fileName = fileName+"_"+mf.getOriginalFilename();
+			
+			System.out.println(fileName);
+			
+			file = new File(file, fileName);
+			System.out.println(file);
+			
+			mf.transferTo(file);
+			
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(mf.getOriginalFilename());
+			qnaDAO.setAddFiles(boardFileDTO);
+			System.out.println("저장");
+		}
+		
 		return result;
 	}
 	

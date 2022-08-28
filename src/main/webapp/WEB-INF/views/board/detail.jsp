@@ -18,6 +18,17 @@
 <br>
 <section class="container-fluid col-lg-5">
 	<div class="row">
+	
+<div class="text-center">
+	<table class="table table-bordered border-primary">
+		<tr><td>
+	<c:forEach items="${boardDTO.boardFileDTO}" var="file">
+  		<img width=200 height=200 src="../resources/upload/${board}/${file.fileName}" class="rounded" alt="...">
+	</c:forEach>
+		</td></tr>
+	</table>
+</div>
+	
 	<table class="table table-bordered border-primary">
 	    <tr>	
 	      <td>#</td>

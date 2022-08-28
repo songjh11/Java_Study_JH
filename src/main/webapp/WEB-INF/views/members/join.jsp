@@ -21,9 +21,10 @@
 	<img src="/resources/images/hh (1).png">
 </div>
 <br>
+
 <section class="container-fluid col-lg-3">
 	<div class="row">
-<form action="join.do" method="post">
+<form action="join.do" method="post" enctype="multipart/form-data">
 <div class="input-group mb-3">
   <input type="text" name="userName" class="form-control" placeholder="ID" aria-label="Username" aria-describedby="basic-addon1">
 </div>
@@ -42,6 +43,10 @@
 
 <div class="input-group mb-3">
   <input type="text" class="form-control" name="phone" placeholder="Phone" aria-label="Username">
+</div>
+
+<div class="input-group mb-3">
+  <input type="file" class="form-control" id="files" name="photo" placeholder="photo" aria-label="files">
 </div>
 
  <div class="col-12">

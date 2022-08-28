@@ -44,9 +44,14 @@
     	 		<include refid="search"></include>
     	 	</select>
 		 	
-		 	<select id="getDetail" parameterType="BoardDTO" resultType="QnaDTO">
-		 		SELECT * FROM QNA WHERE NUM=#{num}
-		 	</select>
+		 	<select id="getDetail" parameterType="BoardDTO" resultMap="getDetailResult">
+		 			SELECT Q.NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, FILENUM, FILENAME 
+				 		FROM QNA Q
+						LEFT JOIN
+						QNAFILE QF
+						ON Q.NUM = QF.NUM
+						WHERE Q.NUM = #{num}
+			</select>
 		 	
 		 	
 		 	<insert id="setAdd" parameterType="BoardDTO">
@@ -70,7 +75,22 @@
 	    	 	UPDATE QNA SET HIT=HIT+1 WHERE NUM=#{num}
     	 	</update>
     	 	
-    	 	
+    	 	<insert id="setAddFiles" parameterType="BoardFileDTO">
+		 		INSERT INTO QNAFILE (FILENUM, FILENAME, ORINAME, NUM) 
+		 		VALUES (FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, (SELECT MAX(NUM) FROM QNA))
+		 	</insert>
 		 	
+		 	<resultMap type="QnaDTO" id="getDetailResult">
+			 		<id column="NUM" property="num"/>
+			 		<result column="TITLE" property="title"/>
+			 		<result column="CONTENTS" property="contents"/>
+			 		<result column="WRITER" property="writer"/>
+			 		<result column="REGDATE" property="regDate"/>
+			 		<result column="HIT" property="hit"/>
+		 		<collection property="boardFileDTO" javaType="List" ofType="boardFileDTO">
+		 			<id column="FILENUM" property="fileNum"/>
+		 			<result column="FILENAME" property="fileName"/>
+		 		</collection>
+		 	</resultMap>
 		 
 		 </mapper>

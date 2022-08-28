@@ -5,6 +5,13 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		    
 		 <mapper namespace="com.iu.spring.bankmembers.BankMembersDAO">
+		 	
+		 	<insert id="setAddFile" parameterType="BankMembersFileDTO">
+		 		INSERT INTO MEMBERFILE (FILENUM, FILENAME, ORINAME, USERNAME) 
+		 		VALUES (FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{userName})
+		 	</insert>
+		 
+		 
 		 	<select id="getLogin" parameterType="BankMembersDTO" resultType="BankMembersDTO">
 			SELECT USERNAME, NAME FROM BANKMEMBERS WHERE USERNAME=#{userName} AND PASSWORD=#{password}
 			</select>	
@@ -18,15 +25,22 @@
 			</insert>
 			
 			<select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult">
-				  SELECT M.USERNAME, M.NAME, M.EMAIL, M.PHONE, A.ACCOUNTNUM, B.BOOKNAME, A.ACCOUNTDATE
+				  SELECT M.USERNAME, NAME, EMAIL, PHONE, FILENUM, FILENAME, ACCOUNTNUM, BOOKNAME, ACCOUNTDATE
 				    FROM BANKMEMBERS M
-				    INNER JOIN
+				    
+				    LEFT JOIN
+				    MEMBERFILE F
+				    ON M.USERNAME = F.USERNAME
+				    
+				    LEFT JOIN
 				    BANKACCOUNT A
-				    ON (M.USERNAME=A.USERNAME)
-				    INNER JOIN
+				    ON M.USERNAME=A.USERNAME 
+				     
+				    LEFT JOIN
 				    BANKBOOK B
-				    ON (A.BOOKNUM = B.BOOKNUM)
-				    WHERE M.USERNAME =#{userName}
+				    ON A.BOOKNUM = B.BOOKNUM
+				    
+				  WHERE M.USERNAME =#{userName}
 				    ORDER BY A.ACCOUNTNUM DESC
 			</select>
 			
@@ -35,16 +49,21 @@
 				<result column="NAME" property="name"/>
 				<result column="EMAIL" property="email"/>
 				<result column="PHONE" property="phone"/>
+			
+			<association property="bankMembersFileDTO" javaType="BankMembersFileDTO">
+				<id column="FILENUM" property="fileNum"/>
+				<result column="FILENAME" property="fileName"/>
+			</association>
 					
 			<collection property="bankAccountDTO" javaType="List" ofType="bankAccountDTO">
 				<id column="ACCOUNTNUM" property="accountNum"/>
 				<result column="ACCOUNTDATE" property="accountDate"/>
-				<association property="bankBookDTO" javaType="BankBookDTO">
+				
+			<association property="bankBookDTO" javaType="BankBookDTO">
 					<result column="BOOKNAME" property="bookName"/>
 				</association>
 			</collection>
-			
-		</resultMap>
+			</resultMap>
 
 	 </mapper>
 	 

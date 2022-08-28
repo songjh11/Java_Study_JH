@@ -3,6 +3,7 @@ package com.iu.spring.board.impl;
 import java.util.List;
 import java.util.Map;
 
+
 import com.iu.spring.util.Pager;
 
 
@@ -28,4 +29,7 @@ public interface BoardDAO {
 		
 	//페이지 수 만들기
 		public Long getPageCount(Pager pager) throws Exception;
+	
+	//파일 추가하기	
+		public int setAddFiles(BoardFileDTO boardFileDTO) throws Exception;
 }

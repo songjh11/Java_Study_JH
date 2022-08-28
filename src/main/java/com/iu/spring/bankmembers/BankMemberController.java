@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.spring.bankaccount.BankAccountDTO;
@@ -78,10 +79,12 @@ public class BankMemberController {
 	}
 
 	@RequestMapping(value="join.do", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO) throws Exception {
+	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo) throws Exception {
 		System.out.println("회원가입 실행");
 		System.out.println("POST");
-		int result = bankMemberService.setJoin(bankMembersDTO);
+		System.out.println(photo.getOriginalFilename());
+
+		int result = bankMemberService.setJoin(bankMembersDTO, photo);
 			if(result==1) {
 				System.out.println("성공");
 				} else {

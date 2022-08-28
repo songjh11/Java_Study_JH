@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.spring.board.impl.BoardDTO;
@@ -68,15 +69,16 @@ public class QnaController {
 		}
 		
 		@RequestMapping(value="add.do", method=RequestMethod.POST)
-		public ModelAndView setAdd(BoardDTO boardDTO) throws Exception {
+		public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 			ModelAndView view = new ModelAndView();
-			int result = qnaService.setAdd(boardDTO);
+			int result = qnaService.setAdd(boardDTO, files);
 			view.setViewName("redirect:./list.do");
 			return view;
 		}
 		
 		@RequestMapping(value="update.do", method=RequestMethod.GET)
 		public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView view) throws Exception {
+			boardDTO = qnaService.getDetail(boardDTO);
 			view.addObject("boardDTO", boardDTO);
 			view.setViewName("board/update");
 			return view;
