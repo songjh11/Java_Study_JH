@@ -21,8 +21,6 @@ public class BankMemberService {
 	
 	@Autowired
 	private BankMembersDAO bankMembersDAO;
-	@Autowired
-	private ServletContext servletContext;
 	
 	@Autowired
 	private BankAccountService bankAccountService;
@@ -31,7 +29,7 @@ public class BankMemberService {
 		return bankMembersDAO.getLogin(bankMembersDTO);
 	}
 	
-	public int setJoin(BankMembersDTO bankMembersDTO, MultipartFile photo) throws Exception {
+	public int setJoin(BankMembersDTO bankMembersDTO, MultipartFile photo, ServletContext servletContext) throws Exception {
 		
 		int result = bankMembersDAO.setJoin(bankMembersDTO);
 		

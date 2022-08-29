@@ -14,8 +14,6 @@ public class BoardDTO {
 	private List<BoardFileDTO> boardFileDTO;
 	
 	
-	
-
 	public List<BoardFileDTO> getBoardFileDTO() {
 		return boardFileDTO;
 	}
@@ -35,10 +33,14 @@ public class BoardDTO {
 		this.title = title;
 	}
 	public String getContents() {
+		if(this.contents.equals("(null)")) {
+			this.contents = "내용 없음";
+		}
 		return contents;
 	}
 	public void setContents(String contents) {
-		this.contents = contents;
+		this.contents= contents;
+		
 	}
 	public String getWriter() {
 		return writer;

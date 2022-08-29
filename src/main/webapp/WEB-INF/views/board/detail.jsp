@@ -23,7 +23,9 @@
 	<table class="table table-bordered border-primary">
 		<tr><td>
 	<c:forEach items="${boardDTO.boardFileDTO}" var="file">
+  		<a href="../resources/upload/${board}/${file.fileName}">
   		<img width=200 height=200 src="../resources/upload/${board}/${file.fileName}" class="rounded" alt="...">
+  		</a>
 	</c:forEach>
 		</td></tr>
 	</table>

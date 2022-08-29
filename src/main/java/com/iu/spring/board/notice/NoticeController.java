@@ -3,6 +3,9 @@ package com.iu.spring.board.notice;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,9 +66,9 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="add.do", method=RequestMethod.POST)
-	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception{
+	public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
-		int result = noticeService.setAdd(boardDTO, files);
+		int result = noticeService.setAdd(boardDTO, files, session.getServletContext());
 		modelAndView.setViewName("redirect:./list.do");
 		return modelAndView;
 	}

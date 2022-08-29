@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,12 +81,12 @@ public class BankMemberController {
 	}
 
 	@RequestMapping(value="join.do", method = RequestMethod.POST)
-	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo) throws Exception {
+	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo, HttpSession session) throws Exception {
 		System.out.println("회원가입 실행");
 		System.out.println("POST");
 		System.out.println(photo.getOriginalFilename());
 
-		int result = bankMemberService.setJoin(bankMembersDTO, photo);
+		int result = bankMemberService.setJoin(bankMembersDTO, photo, session.getServletContext());
 			if(result==1) {
 				System.out.println("성공");
 				} else {

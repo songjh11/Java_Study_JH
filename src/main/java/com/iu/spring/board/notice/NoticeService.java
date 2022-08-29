@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.iu.spring.board.impl.BoardDTO;
 import com.iu.spring.board.impl.BoardFileDTO;
 import com.iu.spring.board.impl.BoardService;
+import com.iu.spring.util.FileManager;
 import com.iu.spring.util.Pager;
 
 @Service
@@ -24,13 +25,15 @@ public class NoticeService implements BoardService {
 	private NoticeDAO noticeDAO;
 	
 	@Autowired
-	private ServletContext servletContext;
+	private FileManager fileManager;
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		Long totalCount = noticeDAO.getPageCount(pager);
 		pager.getNum(totalCount);
 		pager.getRowNum();
+		System.out.println(pager.getStartRow());
+		System.out.println(pager.getKind()+pager.getSearch());
 //		System.out.println("Service page: "+page);
 //		//page         startRow            lastRow
 //		//1              1                    10
@@ -106,43 +109,17 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+	public int setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception {
 		int result = noticeDAO.setAdd(boardDTO);
 		// /resources/upload/notice
+		
+		String path = "resources/upload/Notice";
 
-		String realPath = servletContext.getRealPath("resources/upload/Notice");
-		System.out.println("realPath : "+realPath);
-		
-		File file = new File(realPath);
-		
-		System.out.println(file);
-		
 		for(MultipartFile mf: files) {
 			if(mf.isEmpty()) {
 				continue;
-			} 
-
-			if(!file.exists()) {
-				file.mkdirs();
 			}
-//			    String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-//	            long fileSize = mf.getSize(); // 파일 사이즈
-//
-//	            System.out.println("originFileName : " + originFileName);
-//	            System.out.println("fileSize : " + fileSize);
-		
-			file = new File(realPath);
-			
-			String fileName = UUID.randomUUID().toString();
-			fileName = fileName+"_"+mf.getOriginalFilename();
-			
-			System.out.println(fileName);
-			
-			file = new File(file, fileName);
-			System.out.println(file);
-			
-			mf.transferTo(file);
-			
+			String fileName = fileManager.saveFiles(path, servletContext, mf);
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
 			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOriName(mf.getOriginalFilename());
@@ -150,9 +127,10 @@ public class NoticeService implements BoardService {
 			noticeDAO.setAddFiles(boardFileDTO);
 			System.out.println("저장");
 		}
-
 		return result;
-	}
+		}
+
+	
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {

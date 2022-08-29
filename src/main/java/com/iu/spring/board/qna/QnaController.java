@@ -2,6 +2,9 @@ package com.iu.spring.board.qna;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,9 +72,9 @@ public class QnaController {
 		}
 		
 		@RequestMapping(value="add.do", method=RequestMethod.POST)
-		public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+		public ModelAndView setAdd(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception {
 			ModelAndView view = new ModelAndView();
-			int result = qnaService.setAdd(boardDTO, files);
+			int result = qnaService.setAdd(boardDTO, files, session.getServletContext());
 			view.setViewName("redirect:./list.do");
 			return view;
 		}
