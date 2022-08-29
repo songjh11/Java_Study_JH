@@ -17,7 +17,7 @@
 		 		 
 		 	<insert id="setAddFiles" parameterType="BoardFileDTO">
 		 		INSERT INTO NOTICEFILE (FILENUM, FILENAME, ORINAME, NUM) 
-		 		VALUES (FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, (SELECT MAX(NUM) FROM NOTICE))
+		 		VALUES (FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{num})
 		 	</insert>
 		 
 		 	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
@@ -40,8 +40,11 @@
 		 	</select>
 		 	
 		 	<insert id="setAdd" parameterType="BoardDTO">
+		 		<selectKey order="BEFORE" keyProperty="num" resultType="Long">
+		 			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+		 		</selectKey>
 		 		INSERT INTO NOTICE (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT)
-		 		VALUES (BOARD_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0)
+		 		VALUES (#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0)
 		 	</insert>
 		 	
 		 	<update id="setUpdate" parameterType="BoardDTO">

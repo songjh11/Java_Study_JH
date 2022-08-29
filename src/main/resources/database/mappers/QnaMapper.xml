@@ -77,7 +77,7 @@
     	 	
     	 	<insert id="setAddFiles" parameterType="BoardFileDTO">
 		 		INSERT INTO QNAFILE (FILENUM, FILENAME, ORINAME, NUM) 
-		 		VALUES (FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, (SELECT MAX(NUM) FROM QNA))
+		 		VALUES (FILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{num})
 		 	</insert>
 		 	
 		 	<resultMap type="QnaDTO" id="getDetailResult">

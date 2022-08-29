@@ -109,17 +109,18 @@ public class NoticeService implements BoardService {
 	public int setAdd(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
 		int result = noticeDAO.setAdd(boardDTO);
 		// /resources/upload/notice
+
+		String realPath = servletContext.getRealPath("resources/upload/Notice");
+		System.out.println("realPath : "+realPath);
+		
+		File file = new File(realPath);
+		
+		System.out.println(file);
 		
 		for(MultipartFile mf: files) {
 			if(mf.isEmpty()) {
 				continue;
 			} 
-			String realPath = servletContext.getRealPath("resources/upload/Notice");
-			System.out.println("realPath : "+realPath);
-			
-			File file = new File(realPath);
-			
-			System.out.println(file);
 
 			if(!file.exists()) {
 				file.mkdirs();
@@ -130,6 +131,8 @@ public class NoticeService implements BoardService {
 //	            System.out.println("originFileName : " + originFileName);
 //	            System.out.println("fileSize : " + fileSize);
 		
+			file = new File(realPath);
+			
 			String fileName = UUID.randomUUID().toString();
 			fileName = fileName+"_"+mf.getOriginalFilename();
 			
@@ -143,6 +146,7 @@ public class NoticeService implements BoardService {
 			BoardFileDTO boardFileDTO = new BoardFileDTO();
 			boardFileDTO.setFileName(fileName);
 			boardFileDTO.setOriName(mf.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
 			noticeDAO.setAddFiles(boardFileDTO);
 			System.out.println("저장");
 		}
