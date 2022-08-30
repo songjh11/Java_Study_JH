@@ -5,6 +5,7 @@
 <html>
 <head>
 	<title>Home</title>
+	<script></script>
 </head>
 <body>
 <h1>
@@ -23,5 +24,10 @@
 <a href="./bankbook/add.do">Add</a><br>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+<script>
+ alert("Hello");
+
+</script>
 </body>
 </html>

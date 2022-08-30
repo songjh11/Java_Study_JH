@@ -47,7 +47,7 @@ public class BankBookController {
 		bankBookDTO.setBookNum((Long)cal.getTimeInMillis());
 		System.out.println(bankBookDTO.getBookNum());
 		model.addAttribute("add", bankBookDTO);
-	}
+	} 
 	
 	@RequestMapping (value = "add.do", method = RequestMethod.POST)
 	public ModelAndView addBook(BankBookDTO bankBookDTO) throws Exception {
