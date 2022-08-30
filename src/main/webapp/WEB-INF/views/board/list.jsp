@@ -21,24 +21,24 @@
 <section class="container-fluid col-lg-7">
 	<div class="row">
 <h1 class="align-center">${board} Board</h1>
-	<form action="./list.do" class="row row-cols-lg-auto g-3 align-items-center">
+	<form action="./list.do" class="row row-cols-lg-auto g-3 align-items-center" id="frm">
   <div class="col-12">
     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-    <select name= "kind" class="form-select" id="kind">
-      <option value="contents">Contents</option>
-      <option value="title">Title</option>
-      <option value="writer">Writer</option>
+    <select name= "kind" class="form-select" id="kind" value="${param.kind}">
+      <option class="kinds" value="contents">Contents</option>
+      <option class="kinds"  value="title">Title</option>
+      <option class="kinds"  value="writer">Writer</option>
     </select>
   </div>
   
   <div class="col-12">
     <label class="visually-hidden" for="search">검색어</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="search" name="search">
+      <input type="text" class="form-control" id="search" name="search" value="${param.search}">
     </div>
   </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-primary" id="sbutton">Submit</button>
   </div>
 </form>	
 
@@ -116,6 +116,19 @@
 </div>
 <br><br>
 <c:import url="../template/footer.jsp"></c:import>
+	<script src="/resources/JS/board.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+	<script>
+let k = "${param.kind}";
+const kinds = document.getElementsByClassName("kinds");
+
+    for(let i=0; i<kinds.length; i++){
+            if(k==kind[i].value){
+                kind[i].selected=true;
+                break;
+            }
+		}
+   
+	</script>
 </body>
 </html>
