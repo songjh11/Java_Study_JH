@@ -10,6 +10,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <style>
     .align-center {text-align: center;}
+    #checkbox{
+      display : flex ;
+      flex-direction: column;
+      justify-content: center;
+    }
 </style>
 </head>
 <body>
@@ -24,19 +29,18 @@
 
 <section class="container-fluid col-lg-3">
 	<div class="row">
-<form action="ok.do" method="post" enctype="multipart/form-data">
-<div class="input-group mb-3">
-  모두 선택<input type="checkbox" name="box" id="all">
-  <input type="checkbox" name="box" class="cb">
-  <input type="checkbox" name="box" class="cb">
-  <input type="checkbox" name="box" class="cb">
-  <input type="checkbox" name="box" class="cb">
+    <div id="checkbox">
+      <p>모두 선택<input type="checkbox" name="box" id="all"></p>
+      <p>동의1(필수)<input type="checkbox" name="box" class="cb req"></p>
+      <p>동의2(필수)<input type="checkbox" name="box" class="cb req"></p>
+      <p>동의3(선택)<input type="checkbox" name="box" class="cb"></p>
+      <p>동의4(선택)<input type="checkbox" name="box" class="cb"></p>
+    </div>
+    
+<form action="ok.do" method="post" id="frm">
+    <div class="col-12">
+  <button type="button" class="btn btn-primary" id="joinBtn">약관 동의</button>
 </div>
-
-<div class="col-12">
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</div>
-
 </form>
 </div>
 
