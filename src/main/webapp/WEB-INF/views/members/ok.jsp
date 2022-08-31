@@ -14,8 +14,10 @@
       display : flex ;
       flex-direction: column;
       justify-content: center;
+      margin-right: 10px;
     }
 </style>
+
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
