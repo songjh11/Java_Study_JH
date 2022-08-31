@@ -14,8 +14,12 @@
       display : flex ;
       flex-direction: column;
       justify-content: center;
-      margin-right: 10px;
-    }
+      width : 100%;
+          }
+    input{
+          margin-left : 10px;
+          }        
+
 </style>
 
 </head>
