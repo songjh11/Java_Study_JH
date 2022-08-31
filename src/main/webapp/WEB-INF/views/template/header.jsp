@@ -22,7 +22,7 @@
 	                        </c:when>
 	                        <c:otherwise>
 		                        <a class="nav-link" href="/members/login.do">로그인</a>
-		                        <a class="nav-link" href="/members/join.do">회원가입</a>
+		                        <a class="nav-link" href="/members/ok.do">회원가입</a>
 	                        </c:otherwise>	
                         </c:choose>
 		                        <a class="nav-link" href="/members/search.do">회원검색</a>

@@ -5,6 +5,8 @@ const password = document.getElementById("password");
 const fail = document.getElementById("fail");
 const idHelp = document.getElementById("idHelp");
 const pwHelp = document.getElementById("pwHelp");
+const all = document.getElementById("all");
+const cb = document.getElementsByClassName("cb");
 
 btn.addEventListener("click", function(){
     let u = id.value;
@@ -23,3 +25,17 @@ btn.addEventListener("click", function(){
                 loginForm.submit();
             }
     })
+
+all.addEventListener("click", function(){
+    if(all.checked==true){
+        for(let i=0; i<cb.length; i++){
+            cb[i].checked=true;
+        }
+    } 
+    else{
+        for(let i=0; i<cb.length; i++){
+            cb[i].checked = false;
+        }
+    }
+    
+})

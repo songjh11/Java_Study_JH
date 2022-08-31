@@ -29,6 +29,18 @@ public class BankMemberController {
 //	@Autowired
 //	private BankAccountService bankAccountService;
 	
+	@RequestMapping(value="ok.do", method=RequestMethod.GET)
+	public void getOk(){
+		System.out.println("okget");
+	}
+	
+	@RequestMapping(value="ok.do", method=RequestMethod.POST)
+	public ModelAndView getOkp() {
+		ModelAndView view = new ModelAndView(); 
+		view.setViewName("members/join");
+		return view;
+	}
+	
 	@RequestMapping (value="myPage.do", method=RequestMethod.GET)
 	public ModelAndView myPage(HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
