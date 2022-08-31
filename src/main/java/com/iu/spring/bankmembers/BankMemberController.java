@@ -36,8 +36,9 @@ public class BankMemberController {
 	
 	@RequestMapping(value="ok.do", method=RequestMethod.POST)
 	public ModelAndView getOkp() {
+		System.out.println("okp");
 		ModelAndView view = new ModelAndView(); 
-		view.setViewName("members/join");
+		view.setViewName("redirect:./join.do");
 		return view;
 	}
 	
