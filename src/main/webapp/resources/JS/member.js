@@ -1,4 +1,4 @@
-function loginChech(){
+function loginCheck(){
     const btn = document.getElementById("btn");
     const loginForm = document.getElementById("loginForm");
     const id = document.getElementById("id");
