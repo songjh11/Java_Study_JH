@@ -23,7 +23,7 @@
 <form action="add.do" method = "POST" enctype="multipart/form-data">
 
 	<div>
-		<table class="table table-bordered border-primary">
+		<table class="table table-bordered border-primary" id="tableAdd">
 	  <thead>
 	    <tr>
 	      <th scope="col">TITLE</th>
@@ -34,25 +34,21 @@
 			<td><input type="text" name="writer" readonly value="${sessionScope.member.userName}"></td>
 	    </tr>
 	  </thead>
-	  <tbody>
+	  <tbody id="tbody">
 			<tr>
 				<th scope="col" colspan="2">CONTENTS</th>
 			</tr>
 			<tr>	
 				<td colspan="2"><textarea rows="20" cols="70" id="contents" name="contents"></textarea></td>		
 			</tr>
-			<tr>	
-				<td colspan="2"><input type="file" name="files">파일1</td>		
-			</tr>
-			<tr>	
-				<td colspan="2"><input type="file" name="files">파일2</td>			
-			</tr>
-			<tr>	
-				<td colspan="2"><input type="file" name="files">파일3</td>			
-			</tr>
 	   </tbody>
 </table>
-	</div>
+
+
+</div>
+<div id="addFiles">
+	<button type="button" class="btn btn-danger" id="fileAdd">파일 추가</button>
+</div>
 			<c:choose>
 	<c:when test="${board eq 'Notice'}">
 		<c:if test="${sessionScope.member.userName eq 'Manager'}">
@@ -75,6 +71,9 @@
 <br><br>
 <c:import url="../template/footer.jsp"></c:import>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
+<script src="/resources/JS/board_fileAdd.js"></script>
+<script>
+	filesAdd();
+</script>
 </body>
 </html>
