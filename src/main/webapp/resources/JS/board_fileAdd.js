@@ -62,11 +62,12 @@
                     }
                 })
                 tableAdd.addEventListener("click", function(event){
-                   if(event.target.classList[0]=="del"){
-                       alert(event.target.innerHTML);
-                        tableAdd.removeChild(0);
-                                      console.log(event.target);
-
+                    let buttondel = event.target;
+                   if(buttondel.classList[0]=="del"){
+                       alert(buttondel.innerHTML);
+                            document.getElementById("file"+buttondel.id).remove();
+                               result--;
+                               console.log(result);
                    }
                 })
             }
