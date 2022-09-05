@@ -48,4 +48,8 @@ public class BankBookDAO implements BookDAO {
 		return sqlSession.delete(NAMESPACE+"deleteBook", bankBookDTO);
 	}
 	
+	public int setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setCommentAdd", bankBookCommentDTO);
+	}
+	
 }
