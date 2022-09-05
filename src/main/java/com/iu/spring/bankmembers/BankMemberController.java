@@ -74,16 +74,24 @@ public class BankMemberController {
 	}
 	
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
-	public String login(HttpSession session, BankMembersDTO bankMembersDTO, Model model) throws Exception {
+	public ModelAndView login(HttpSession session, BankMembersDTO bankMembersDTO, Model model) throws Exception {
+		ModelAndView view = new ModelAndView();
 		bankMembersDTO = bankMemberService.getLogin(bankMembersDTO);
 		session.setAttribute("member", bankMembersDTO);
+		int result=0;
+		String message = "로그인 실패";
+		String url = "./login.do";
 		if(bankMembersDTO!=null) {
-			System.out.println("로그인 성공");
-		} else {
-			System.out.println("로그인 실패");
-			return "redirect:./login.do";
+			result = 1;
+			message="로그인 성공";
+			url = "../";
 		}
-		return "redirect:../";
+		view.addObject("result", result);
+		view.addObject("message", message);
+		view.addObject("url", url);
+		view.setViewName("common/result");
+		
+		return view;
 	}
 	
 	@RequestMapping(value = "join.do", method = RequestMethod.GET)
