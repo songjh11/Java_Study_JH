@@ -11,6 +11,14 @@ public class BankBookService {
 	@Autowired
 	private BankBookDAO bankBookDAO;
 	
+	@Autowired
+	private BankBookCommentDAO bankBookCommentDAO;
+	
+	public int setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception {
+		return bankBookCommentDAO.setCommentAdd(bankBookCommentDTO);
+	}
+	
+	
 	public int setUpdate(BankBookDTO bankBookDTO) throws Exception {
 		return bankBookDAO.setUpdate(bankBookDTO);
 	}
