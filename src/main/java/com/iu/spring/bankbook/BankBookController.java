@@ -7,10 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.iu.spring.util.CommentPager;
 
 
 
@@ -21,11 +25,28 @@ public class BankBookController {
 	@Autowired
 	private BankBookService bankBookService;
 	
-	
-	@PostMapping ("" )
-	public void setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+	@GetMapping("commentList")
+	@ResponseBody
+	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager) {
+		System.out.println("CommentList");
+		System.out.println(commentPager.getBookNum());
+		ModelAndView mv = new ModelAndView();
+		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
+		System.out.println(ar.size());		
 		
+		return ar;
+	}
+	
+	
+	@PostMapping ("commentAdd")
+	@ResponseBody
+	public String setCommentAdd(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
 		int result = bankBookService.setCommentAdd(bankBookCommentDTO);
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("common/ajaxResult");
+		String jsonResult = "{\"result\":\""+result+"\"}";
+		return jsonResult;
 	}
 	
 	@RequestMapping (value = "list.do", method = RequestMethod.GET)
