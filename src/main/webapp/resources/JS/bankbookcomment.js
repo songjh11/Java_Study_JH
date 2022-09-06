@@ -7,7 +7,7 @@ getCommentList();
 
 commentAdd.addEventListener("click", function(){
     
-    let booknum= commentAdd.getAttribute("data-book-num")
+    let bookNum= commentAdd.getAttribute("data-book-num")
     let wv = writer.value;
     let cv = contents.value;
     
@@ -25,7 +25,7 @@ commentAdd.addEventListener("click", function(){
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     //4. 전송(POST일 경우 파라미터 추가)
-    xhttp.send("bookNum="+booknum+"&writer="+wv+"&contents="+cv);
+    xhttp.send("bookNum="+bookNum+"&writer="+wv+"&contents="+cv);
 
     //5. 응답 처리
     xhttp.onreadystatechange=function(){
@@ -45,20 +45,19 @@ commentAdd.addEventListener("click", function(){
 })//click event end
 
 function getCommentList(){
-
-    let booknum= commentAdd.getAttribute("data-book-num")
+    let bookNum= commentAdd.getAttribute("data-book-num")
 
     //1. XMLHttpRequest 생성
     const xhttp = new XMLHttpRequest();
 
     //2. Method, URL 정보
-    xhttp.open("GET","./commentList?page=1&bookNum="+booknum);
+    xhttp.open("GET","./commentList?page=1&bookNum="+bookNum);
 
     //3. 요청 전송
     xhttp.send();
 
     //4. 응답 처리
-    xhttp.addEventListener("onreadystatechange", function(){
+    xhttp.addEventListener("readystatechange", function(){
         if(this.readyState==4 && this.status==200){
             console.log(xhttp.responseText);
             // 1. 
