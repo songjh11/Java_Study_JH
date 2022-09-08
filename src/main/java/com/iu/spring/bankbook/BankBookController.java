@@ -1,7 +1,9 @@
 package com.iu.spring.bankbook;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +27,38 @@ public class BankBookController {
 	@Autowired
 	private BankBookService bankBookService;
 	
+	@PostMapping("commentDelete")
+	@ResponseBody
+	public int setDeleteComment(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		System.out.println("delete");
+		int result = bankBookService.setDeleteComment(bankBookCommentDTO);
+		return result;
+	}
+	
+	@PostMapping("commentUpdate")
+	@ResponseBody
+	public int setCommentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+		System.out.println("update");
+		System.out.println(bankBookCommentDTO.getNum());
+		System.out.println(bankBookCommentDTO.getContents());
+		int result = bankBookService.setCommentUpdate(bankBookCommentDTO);
+		return result;
+	}
+	
 	@GetMapping("commentList")
 	@ResponseBody
-	public List<BankBookCommentDTO> getCommentList(CommentPager commentPager) {
+	public Map<String, Object> getCommentList(CommentPager commentPager) throws Exception {
 		System.out.println("CommentList");
 		System.out.println(commentPager.getBookNum());
 		ModelAndView mv = new ModelAndView();
 		List<BankBookCommentDTO> ar = bankBookService.getCommentList(commentPager);
 		System.out.println(ar.size());		
 		
-		return ar;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", ar);
+		map.put("pager", commentPager);
+		
+		return map;
 	}
 	
 	

@@ -2,11 +2,14 @@ package com.iu.spring.board.impl;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class CommentDTO {
 
 	private Long num;
 	private String writer;
 	private String contents;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date regDate;
 	
 	

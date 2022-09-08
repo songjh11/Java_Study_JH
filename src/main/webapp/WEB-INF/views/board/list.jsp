@@ -89,6 +89,7 @@
 	    	<li class="page-item disabled">
 	    </c:otherwise>
 	</c:choose> --%>
+
 	<li class="page-item ${pager.next?'':'disabled'}">
       <a class="page-link" href="./list.do?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a>
     </li>
@@ -99,11 +100,9 @@
 <div >
 <c:choose>
 	<c:when test="${board eq 'Notice'}">
-		<c:if test="${sessionScope.member.userName eq 'Manager'}">
 		<div class="align-center">
 			<a href = "./add.do"><button class="btn btn-primary">공지 작성</button></a>
 		</div>
-		</c:if>
 	</c:when>	
 	<c:otherwise>
 		<c:if test="${not empty sessionScope.member}">

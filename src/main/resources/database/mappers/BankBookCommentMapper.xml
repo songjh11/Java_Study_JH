@@ -12,10 +12,22 @@
 	<select id="getCommentList" parameterType="CommentPager"  resultType="BankBookCommentDTO">
 		SELECT * FROM
 		    (SELECT ROWNUM R, C.* FROM
-		       (SELECT WRITER, CONTENTS, REGDATE 
+		       (SELECT * 
 			    FROM BB_COMMENT WHERE BOOKNUM=#{bookNum} 
 			    ORDER BY NUM DESC) C)
 		WHERE R BETWEEN #{startRow} and #{lastRow}
 	</select>
+	
+	<select id="getCommentListTotalCount" parameterType="CommentPager" resultType="Long">
+		SELECT COUNT(NUM) FROM BB_COMMENT WHERE BOOKNUM=#{bookNum}
+	</select>
+	
+	<delete id="setDeleteComment" parameterType="BankBookCommentDTO">
+		DELETE BB_COMMENT WHERE NUM=#{num}
+	</delete>
+	
+	<update id="setCommentUpdate" parameterType="BankBookCommentDTO">
+		UPDATE BB_COMMENT SET CONTENTS = #{contents} WHERE NUM=#{num}
+	</update>
 	
 </mapper>

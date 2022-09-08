@@ -24,5 +24,15 @@ public class BankBookCommentDAO {
 			return sqlSession.selectList(NAMESPACE+"getCommentList", pager);
 		}
 		
+		public Long getCommentListTotalCount(CommentPager pager) throws Exception {
+			return sqlSession.selectOne(NAMESPACE+"getCommentListTotalCount", pager);
+		}
 		
+		public int setDeleteComment(BankBookCommentDTO bankBookCommentDTO) throws Exception {
+			return sqlSession.delete(NAMESPACE+"setDeleteComment", bankBookCommentDTO);
+		}
+		
+		public int setCommentUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
+			return sqlSession.update(NAMESPACE+"setCommentUpdate", bankBookCommentDTO);
+		}
 }

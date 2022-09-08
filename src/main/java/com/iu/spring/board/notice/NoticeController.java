@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.spring.bankmembers.BankMembersDTO;
 import com.iu.spring.board.impl.BoardDTO;
 import com.iu.spring.util.Pager;
 
@@ -61,8 +62,13 @@ public class NoticeController {
 		
 	//글 작성
 	@RequestMapping(value="add.do", method=RequestMethod.GET)
-	public String setAdd() throws Exception {
-		return "board/add";
+	public String setAdd(HttpSession httpSession) throws Exception {
+		BankMembersDTO bankMembersDTO = (BankMembersDTO)httpSession.getAttribute("member");
+		if(bankMembersDTO != null) {
+			return "board/add";
+		} else {
+			return "redirect:../members/login.do";
+		}
 	}
 	
 	@RequestMapping(value="add.do", method=RequestMethod.POST)
