@@ -21,6 +21,32 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- Interceptor 설정 -->
+	<beans:bean class="com.iu.spring.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
+	
+	<!-- URL, Interceptor 매핑 -->
+	<interceptors>
+ 		<interceptor>
+			<mapping path="/qna/*"/>
+			<mapping path="/members/myPage.do"/>
+			<exclude-mapping path="/qna/list.do"/>
+			<beans:bean class="com.iu.spring.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
+		</interceptor>
+
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:ref bean="testInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/update.do"/>
+			<mapping path="/notice/update.do"/>
+			<beans:bean class="com.iu.spring.interceptor.WriterCheckInterceptor" id="writerCheckInterceptor"></beans:bean>
+		</interceptor>
+		
+	</interceptors>
+	
+	
 	<context:component-scan base-package="com.iu.spring" />
 	<context:component-scan base-package="com.iu.spring.notice" />
 	

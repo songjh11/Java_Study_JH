@@ -36,7 +36,6 @@ public class BankMemberController {
 	
 	@RequestMapping(value="ok.do", method=RequestMethod.POST)
 	public ModelAndView getOkp() {
-		System.out.println("okp");
 		ModelAndView view = new ModelAndView(); 
 		view.setViewName("redirect:./join.do");
 		return view;
@@ -63,14 +62,12 @@ public class BankMemberController {
 
 	@RequestMapping (value="logout.do", method=RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
-		System.out.println("logout");
 		session.invalidate();
 		return "redirect:../";
 	}
 	
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public void login() {
-		System.out.println("로그인 실행");
 	}
 	
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
@@ -96,15 +93,11 @@ public class BankMemberController {
 	
 	@RequestMapping(value = "join.do", method = RequestMethod.GET)
 	public void join() {
-		System.out.println("회원가입 실행");
-		System.out.println("GET");
 //		return "redirect:./join.do";
 	}
 
 	@RequestMapping(value="join.do", method = RequestMethod.POST)
 	public String join(BankMembersDTO bankMembersDTO, MultipartFile photo, HttpSession session) throws Exception {
-		System.out.println("회원가입 실행");
-		System.out.println("POST");
 		System.out.println(photo.getOriginalFilename());
 
 		int result = bankMemberService.setJoin(bankMembersDTO, photo, session.getServletContext());
@@ -119,7 +112,6 @@ public class BankMemberController {
 	
 	@RequestMapping(value="search.do", method= RequestMethod.GET)
 	public void getSearchById() {
-		System.out.println("Search");
 		}
 	
 	@RequestMapping(value="search.do", method= RequestMethod.POST)
