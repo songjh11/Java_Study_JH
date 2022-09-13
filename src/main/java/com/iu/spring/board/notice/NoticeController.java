@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +49,11 @@ public class NoticeController {
 		modelAndView.addObject("list", ar);
 		modelAndView.addObject("pager", pager);
 		modelAndView.setViewName("board/list");
+		
+		if(ar.size() !=0) {
+			throw new Exception();
+		}
+		
 		return modelAndView;
 	}
 	
@@ -110,5 +116,23 @@ public class NoticeController {
 		int result = noticeService.setDelete(boardDTO);
 		return "redirect:./list.do";
 		
+	}
+	
+	@ExceptionHandler(NullPointerException.class)
+	public ModelAndView exceptionTest() {
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("errors/error_404");
+		return modelAndView; 
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView exceptionTest2(Exception e) {
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("errors/error_404");
+		return modelAndView; 
 	}
 }
