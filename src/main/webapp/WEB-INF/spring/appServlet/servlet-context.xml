@@ -21,8 +21,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- Interceptor 설정 -->
-	<beans:bean class="com.iu.spring.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
 	
 	<!-- Interceptor 객체 생성 -->
 	<beans:bean class="com.iu.spring.interceptor.AdminCheck" id="adminCheck"></beans:bean>
