@@ -51,7 +51,7 @@
 </div>
 			<c:choose>
 	<c:when test="${board eq 'Notice'}">
-		<c:if test="${sessionScope.member.userName eq 'Manager'}">
+		<c:if test="${sessionScope.member.userName eq 'manager'}">
 		<div class="align-center">
 			<a href = "./add.do"><button type="submit" class="btn btn-primary">공지 등록</button></a>
 		</div>

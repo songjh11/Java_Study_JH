@@ -59,9 +59,16 @@
 				<td>${memberDTO.bankBookDTO.bookName}</td>	
 				<td>${memberDTO.accountDate}</td>			
 			</tr>
-	  </c:forEach>
+	</c:forEach>
 	   </tbody>
 </table>
+				<c:forEach items="${member.roleDTOs}" var="roleDTO">
+					<tr>
+						<td>${roleDTO.roleNum}, ${roleDTO.roleName}</td>
+					</tr>
+				  </c:forEach>
+					<h1>당신은 ${member.roleDTOs.get(0).roleName}</h1>
+					<h1>당신은 ${member.roleDTOs["0"].roleName}</h1>
 </div>
 </div>
 </section>

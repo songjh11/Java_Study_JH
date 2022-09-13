@@ -96,24 +96,11 @@
   </ul>
 </nav>
 
-<br>
-<div >
-<c:choose>
-	<c:when test="${board eq 'Notice'}">
 		<div class="align-center">
-			<a href = "./add.do"><button class="btn btn-primary">공지 작성</button></a>
+			<a href = "./add.do"><button class="btn btn-primary">글쓰기</button></a>
 		</div>
-	</c:when>	
-	<c:otherwise>
-		<c:if test="${not empty sessionScope.member}">
-		<div class="align-center">
-			<a href = "./add.do"><button class="btn btn-primary">QnA 작성</button></a>
-		</div>
-		</c:if>
-	</c:otherwise>
-</c:choose>
-</div>
-<br><br>
+	
+
 <c:import url="../template/footer.jsp"></c:import>
 	<script src="/resources/JS/board.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

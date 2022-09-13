@@ -21,6 +21,40 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- Interceptor 설정 -->
+	<beans:bean class="com.iu.spring.interceptor.TestInterceptor" id="testInterceptor"></beans:bean>
+	
+	<!-- Interceptor 객체 생성 -->
+	<beans:bean class="com.iu.spring.interceptor.AdminCheck" id="adminCheck"></beans:bean>
+	<beans:bean class="com.iu.spring.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
+	
+	<!-- URL, Interceptor 매핑 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/notice/**"/>
+			<mapping path="/qna/**"/>
+			<mapping path="/bankbook/**"/>
+			<mapping path="/bankAccount/**"/>
+			<exclude-mapping path="/bankbook/list.do"/>
+			<exclude-mapping path="/qna/list.do"/>
+			<exclude-mapping path="/notice/list.do"/>
+ 			<exclude-mapping path="/notice/detail.do"/>
+			<beans:ref bean="memberInterceptor"/>		
+		</interceptor>
+	
+ 		<interceptor>
+ 			<mapping path="/bankbook/**"/>
+ 			<mapping path="/notice/**"/>
+ 			<exclude-mapping path="/bankbook/list.do"/>
+ 			<exclude-mapping path="/bankbook/detail.do"/>
+ 			<exclude-mapping path="/bankbook/detail.do"/>
+ 			<exclude-mapping path="/notice/list.do"/>
+ 			<exclude-mapping path="/notice/detail.do"/>
+ 			<beans:ref bean="adminCheck"/>
+ 		</interceptor>		
+	</interceptors>
+	
+	
 	<context:component-scan base-package="com.iu.spring" />
 	<context:component-scan base-package="com.iu.spring.notice" />
 	

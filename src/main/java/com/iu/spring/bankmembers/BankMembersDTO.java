@@ -5,6 +5,7 @@ import java.util.List;
 import com.iu.spring.bankaccount.BankAccountDTO;
 import com.iu.spring.bankbook.BankBookDTO;
 import com.iu.spring.file.FileDTO;
+import com.iu.spring.role.RoleDTO;
 
 public class BankMembersDTO {
 	
@@ -15,9 +16,19 @@ public class BankMembersDTO {
 		private String phone;
 		private List<BankAccountDTO> bankAccountDTO;
 		private BankMembersFileDTO bankMembersFileDTO;
+		private List<RoleDTO> roleDTOs;
+		
+		
 		
 		
 
+		public List<RoleDTO> getRoleDTOs() {
+			return roleDTOs;
+		}
+		public void setRoleDTOs(List<RoleDTO> roleDTOs) {
+			this.roleDTOs = roleDTOs;
+		}
+		
 		public BankMembersFileDTO getBankMembersFileDTO() {
 			return bankMembersFileDTO;
 		}

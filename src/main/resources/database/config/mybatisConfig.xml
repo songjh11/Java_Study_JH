@@ -16,7 +16,7 @@
 				<typeAlias type="com.iu.spring.board.impl.BoardFileDTO" alias="BoardFileDTO"/>
 				<typeAlias type="com.iu.spring.bankbook.BankBookCommentDTO" alias="BankBookCommentDTO"/>
 				<typeAlias type="com.iu.spring.util.CommentPager" alias="CommentPager"/>
-				
+				<typeAlias type="com.iu.spring.role.RoleDTO" alias="RoleDTO"/>
 				
 				<typeAlias type="com.iu.spring.util.Pager" alias="Pager"/>
 				<typeAlias type="java.lang.Long" alias="Long"/>
