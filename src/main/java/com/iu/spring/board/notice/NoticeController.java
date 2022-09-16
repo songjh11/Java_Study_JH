@@ -12,15 +12,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.spring.bankmembers.BankMembersDTO;
 import com.iu.spring.board.impl.BoardDTO;
+import com.iu.spring.board.impl.BoardFileDTO;
 import com.iu.spring.util.Pager;
 
 @Controller
@@ -33,6 +36,14 @@ public class NoticeController {
 	@ModelAttribute("board")
 	public String getBoard() {
 		return "Notice";
+	}
+	
+	@PostMapping("fileDelete")
+	@ResponseBody
+	public int setFileDelete(BoardFileDTO fileDTO, HttpSession session) throws Exception {
+		System.out.println(session.getServletContext());
+		int result = noticeService.setFileDelete(fileDTO, session.getServletContext());
+		return result;
 	}
 	
 	//글 목록
@@ -50,9 +61,6 @@ public class NoticeController {
 		modelAndView.addObject("pager", pager);
 		modelAndView.setViewName("board/list");
 		
-		if(ar.size() !=0) {
-			throw new Exception();
-		}
 		
 		return modelAndView;
 	}
@@ -105,8 +113,8 @@ public class NoticeController {
 			}
 	
 	@RequestMapping (value="update.do", method=RequestMethod.POST)
-	public String setUpdate(BoardDTO boardDTO) throws Exception{
-		int result = noticeService.setUpdate(boardDTO);
+	public String setUpdate(BoardDTO boardDTO, MultipartFile [] files, HttpSession session) throws Exception{
+		int result = noticeService.setUpdate(boardDTO, files, session.getServletContext());
 		return "redirect:./detail.do?num="+boardDTO.getNum();
 			}
 		

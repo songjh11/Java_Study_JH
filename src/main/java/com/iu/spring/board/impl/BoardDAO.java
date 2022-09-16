@@ -3,6 +3,9 @@ package com.iu.spring.board.impl;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.spring.util.Pager;
 
@@ -32,4 +35,10 @@ public interface BoardDAO {
 	
 	//파일 추가하기	
 		public int setAddFiles(BoardFileDTO boardFileDTO) throws Exception;
+	
+	//파일 삭제하기
+		public int setFileDelete(BoardFileDTO boardFileDTO) throws Exception;
+		
+	//
+		public BoardFileDTO getFileDetail(BoardFileDTO boardFileDTO) throws Exception;
 }

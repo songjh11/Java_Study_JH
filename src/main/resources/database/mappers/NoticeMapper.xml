@@ -14,6 +14,14 @@
 			   		</choose>
 			   	LIKE '%'||#{search}||'%'
 		 	</sql>
+		 	
+		 	<select id="getFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+		 		SELECT * FROM NOTICEFILE WHERE FILENUM=#{fileNum}
+		 	</select>
+		 		 
+		 	<delete id="setFileDelete">
+		 		DELETE NOTICEFILE WHERE FILENUM=#{fileNum}
+		 	</delete>	 
 		 		 
 		 	<insert id="setAddFiles" parameterType="BoardFileDTO">
 		 		INSERT INTO NOTICEFILE (FILENUM, FILENAME, ORINAME, NUM) 
@@ -30,7 +38,7 @@
 		 	</select>
 		 	
 		 	<select id="getDetail" parameterType="BoardDTO" resultMap="getDetailResult">
-				 		SELECT N.NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, FILENUM, FILENAME 
+				 		SELECT N.NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, FILENUM, FILENAME, ORINAME 
 				 		FROM NOTICE N
 						LEFT JOIN
 						NOTICEFILE NF
@@ -74,6 +82,7 @@
 		 		<collection property="boardFileDTO" javaType="List" ofType="boardFileDTO">
 		 			<id column="FILENUM" property="fileNum"/>
 		 			<result column="FILENAME" property="fileName"/>
+		 			<result column="ORINAME" property="oriName"/>
 		 		</collection>
 		 	</resultMap>
 	 </mapper>

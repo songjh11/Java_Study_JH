@@ -27,7 +27,7 @@
 	<beans:bean class="com.iu.spring.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
 	
 	<!-- URL, Interceptor 매핑 -->
-	<interceptors>
+	<!-- <interceptors>
 		<interceptor>
 			<mapping path="/notice/**"/>
 			<mapping path="/qna/**"/>
@@ -50,7 +50,7 @@
  			<exclude-mapping path="/notice/detail.do"/>
  			<beans:ref bean="adminCheck"/>
  		</interceptor>		
-	</interceptors>
+	</interceptors> -->
 	
 	
 	<context:component-scan base-package="com.iu.spring" />

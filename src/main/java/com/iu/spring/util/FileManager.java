@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.spring.board.impl.BoardDTO;
 import com.iu.spring.board.impl.BoardFileDTO;
+import com.iu.spring.file.FileDTO;
 
 //FileManager 객체를 생성하려면 @을 주거나 xml에 bean객체를 줘야 사용 가능
 
@@ -22,6 +23,17 @@ public class FileManager {
 	
 //	@ 사용하기
 //	매개변수로 받기
+	
+	//delete
+	public boolean deleteFile(ServletContext context, String Path, FileDTO fileDTO) throws Exception {
+		String realPath = context.getRealPath(Path);
+		System.out.println(realPath);
+		
+		File file = new File(realPath, fileDTO.getFileName());
+				
+		return file.delete();//지우면 true 못지우면 false
+		
+	}
 	
 	
 	//save MultipartFile [] files, 

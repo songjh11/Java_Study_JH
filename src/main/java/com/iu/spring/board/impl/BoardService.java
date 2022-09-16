@@ -3,6 +3,7 @@ package com.iu.spring.board.impl;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,12 +21,16 @@ public interface BoardService {
 	public int setAdd(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception;
 	
 	//글 수정
-	public int setUpdate(BoardDTO boardDTO) throws Exception;
+	public int setUpdate(BoardDTO boardDTO, MultipartFile [] files, ServletContext servletContext) throws Exception;
 	
 	//글 삭제
 	public int setDelete(BoardDTO boardDTO) throws Exception;
 	
 	//조회수 증가
 	public int updateHit(BoardDTO boardDTO) throws Exception;
+	
+	//파일 삭제
+	public int setFileDelete(BoardFileDTO boardFileDTO, ServletContext context) throws Exception;
+
 	
 }

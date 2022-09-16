@@ -60,7 +60,7 @@
 <a href = "./list.do"><button class="btn btn-primary">목록 보기</button></a>
 	<c:choose>
 		<c:when test="${board eq 'Notice'}">
-			<c:if test="${sessionScope.member.userName eq 'Manager'}">
+			<c:if test="${sessionScope.member.userName eq 'manager'}">
 			<a href= "./update.do?num=${boardDTO.num}"><button class="btn btn-primary">공지 수정</button></a>
 			<a href="./delete.do?num=${boardDTO.num}"><button class="btn btn-primary">공지 삭제</button></a>
 			</c:if>
