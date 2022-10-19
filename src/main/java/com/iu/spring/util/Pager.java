@@ -7,13 +7,19 @@ public class Pager {
 	 * jsp에서 꺼내서 사용할 변수
 	 * mapper에서 꺼내서 사용할 변수
 	 * */
-	
+	//page: 시작 페이지 번호
 	private Long page;
+	//startNum: ROWNUM 시작 번호
 	private Long startNum;
+	//lastNum:ROWNUM 끝 번호
 	private Long lastNum;
+	//startRow: ROWNUM(줄) 시작 번호
 	private Long startRow;
+	//lastRow: ROWNUM(줄) 끝 번호
 	private Long lastRow;
+	//perPage: 한 페이지에 보여줄 Data(row)의 갯수
 	private Long perPage;
+	//perBlock: 한 페이지에 보여줄 페이지네이션의 갯수
 	private Long perBlock;
 	
 	//검색 컬럼의 종류

@@ -22,25 +22,25 @@
 	<div class="row">
 <h1 class="align-center">${board} Board</h1>
 	<form action="./list.do" class="row row-cols-lg-auto g-3 align-items-center" id="frm">
-  <div class="col-12">
-    <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-    <select name= "kind" class="form-select" id="kind" value="${param.kind}">
-      <option class="kinds" value="contents">Contents</option>
-      <option class="kinds"  value="title">Title</option>
-      <option class="kinds"  value="writer">Writer</option>
-    </select>
-  </div>
-  
-  <div class="col-12">
-    <label class="visually-hidden" for="search">검색어</label>
-    <div class="input-group">
-      <input type="text" class="form-control" id="search" name="search" value="${param.search}">
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary" id="sbutton">Submit</button>
-  </div>
-</form>	
+		<div class="col-12">
+			<label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+			<select name= "kind" class="form-select" id="kind" value="${param.kind}">
+			<option class="kinds" value="contents">Contents</option>
+			<option class="kinds"  value="title">Title</option>
+			<option class="kinds"  value="writer">Writer</option>
+			</select>
+		</div>
+		
+		<div class="col-12">
+			<label class="visually-hidden" for="search">검색어</label>
+			<div class="input-group">
+			<input type="text" class="form-control" id="search" name="search" value="${param.search}">
+			</div>
+		</div>
+		<div class="col-12">
+			<button type="submit" class="btn btn-primary" id="sbutton">Submit</button>
+		</div>
+	</form>	
 
 
 <div class="mb-16">
